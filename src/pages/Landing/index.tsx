@@ -5,7 +5,7 @@ import {
 export default function LandingPage() {
     return (
         <Flex>
-            Batata
+            Batatinha 123
         </Flex>
     )
 }
