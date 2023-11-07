@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --white: #fafafa;
+    --black: #171717;
+
+    --primary-background: "bg-gradient-to-r from-sky-500 to-indigo-900";
+    --secondary-background: "bg-gradient-to-r from-purple-700 to-fuchsia-500";
+    --primary-border: "bg-gradient-to-r from-cyan-400 to-indigo-900";
+    --secondary-border: "bg-gradient-to-r from-violet-600 to-fuchsia-500";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--black) !important;
+    color: var(--white);
+}
