@@ -1,16 +1,18 @@
 export default function Button(props: any) {
     return (
-        <div className={`w-56 h-16 rounded-full p-0.5 justify-center content-center ${props.border}`}>
-            <div className={`h-full w-full bg-neutral-900 text-white rounded-full justify-center content-center flex border-0 relative`}>
-                <button className={`text-center break-normal absolute justify-center content-center align-middle flex flex-wrap text-xl py-4 px-11 h-full w-full rounded-full font-normal tracking-wider font-sans ${props.background && "hover:opacity-0 transition-opacity duration-100 z-10"} ${props.background}`}>
-                    {props.label}
-                </button>
-                { props.background &&
-                    <div className={`text-center break-normal absolute justify-center content-center align-middle flex flex-wrap text-xl py-4 px-11 h-full w-full rounded-full font-normal tracking-wider font-sans`}>
-                        {props.label}
-                    </div>
-                }
+        <div className={`flex justify-center items-center h-auto w-auto relative`}>
+            <div className={`text-white text-center justify-center content-center flex text-xl ${props.border ? "py-4 px-11" : "py-5 px-12"} h-auto w-auto rounded-full font-normal tracking-wider font-sans whitespace-nowrap break-normal ${props.backBackground ? props.backBackground : "bg-neutral-950"} z-10`}>
+                {props.label}
             </div>
+            <button className={`text-center absolute justify-center content-center flex text-xl ${props.border ? "py-4 px-11" : "py-5 px-12"} h-auto w-auto rounded-full font-normal tracking-wider font-sans whitespace-nowrap break-normal ${props.background && "hover:opacity-0 transition-opacity duration-100 z-10"} ${props.background} z-20`}>
+                {props.label}
+            </button>
+            {
+                props.border &&
+                <div className={`absolute text-center justify-center content-center flex text-xl py-5 px-12 h-auto w-auto rounded-full font-normal tracking-wider font-sans whitespace-nowrap break-normal z-0 ${props.border ? props.border : "bg-neutral-950"}`}>
+                    {props.label}
+                </div>
+            }
         </div>
     )
 }

@@ -1,18 +1,16 @@
-import {
-    Flex,
-} from '@chakra-ui/react';
-import Navbar from '../../components/compound/Navbar';
+import Button from '../../components/base/Button';
 
 export default function TestPage() {
     return (
-        <Flex
-            align="center"
-            justify="center"
-            h="100vh"
-            gap="2rem"
-            color="white"
-        >
-            <Navbar />
-        </Flex>
+        <div className='
+            flex
+            flex-col
+            justify-center
+            items-center
+            h-screen
+            w-full
+        '>
+            <Button label="Orçamento Rápido" background="bg-gradient-to-r from-sky-500 to-indigo-900" border="bg-gradient-to-r from-cyan-400 to-indigo-900" />
+        </div>
     )
 }
