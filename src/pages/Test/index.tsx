@@ -1,4 +1,4 @@
-import Button from '../../components/base/Button';
+import ClientCard from '../../components/ClientCard'
 
 export default function TestPage() {
     return (
@@ -9,8 +9,8 @@ export default function TestPage() {
             items-center
             h-screen
             w-full
-        '>
-            <Button label="Orçamento Rápido" background="bg-gradient-to-r from-sky-500 to-indigo-900" border="bg-gradient-to-r from-cyan-400 to-indigo-900" />
+        ' style={{backgroundColor: "green"}}>
+            <ClientCard />
         </div>
     )
 }
