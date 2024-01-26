@@ -3,11 +3,22 @@ import {
     Text,
     Input,
     Button,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from "react-icons/fi";
 import ClientCard from '../../../components/ClientCard'
+import NewChargeModal from '../../../components/NewChargeModal';
 
 export default function ProviderHome() {
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     return (
         <Flex
             w="100%"
@@ -15,51 +26,16 @@ export default function ProviderHome() {
             direction="column"
             gap="2rem"
         >
-            <Flex
-                w="100%"
-                align="center"
-                gap="1.5rem"
-            >
-                <Flex
-                    w="31.25rem"
-                    h="16.125rem"
-                    align="center"
-                    justify="center"
-                    boxShadow="0px 4px 4px 0px rgba(140, 140, 140, 0.13)"
-                    borderRadius="0.75rem"
-                    bg="white"
-                    p="1rem"
-                    textAlign="center"
-                >
-                    Alguma informação útil aqui
-                </Flex>
-                <Flex
-                    w="31.25rem"
-                    h="16.125rem"
-                    align="center"
-                    justify="center"
-                    boxShadow="0px 4px 4px 0px rgba(140, 140, 140, 0.13)"
-                    borderRadius="0.75rem"
-                    bg="white"
-                    p="1rem"
-                    textAlign="center"
-                >
-                    Alguma informação útil aqui
-                </Flex>
-                <Flex
-                    w="31.25rem"
-                    h="16.125rem"
-                    align="center"
-                    justify="center"
-                    boxShadow="0px 4px 4px 0px rgba(140, 140, 140, 0.13)"
-                    borderRadius="0.75rem"
-                    bg="white"
-                    p="1rem"
-                    textAlign="center"
-                >
-                    Alguma informação útil aqui
-                </Flex>
-            </Flex>
+            <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                    <NewChargeModal />
+                </ModalBody>
+            </ModalContent>
+            </Modal>
             <Flex
                 w="100%"
                 align="center"
@@ -102,12 +78,12 @@ export default function ProviderHome() {
                     _hover={{
                         bg: '#1E40AF',
                     }}
+                    onClick={onOpen}
                 >
                     Nova Cobrança
                 </Button>
             </Flex>
             <Flex
-                overflowX="auto"
                 w="100%"
                 align="flex-start"
                 justify="flex-start"

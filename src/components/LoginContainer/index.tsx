@@ -10,12 +10,18 @@ import {
 import { FiMail, FiLock } from 'react-icons/fi'
 import { useState } from 'react'
 
-export default function LoginContainer() {
+export default function LoginContainer({
+    setIsRegister,
+    isRegister,
+    loginAsClient,
+} : {
+    setIsRegister: Function,
+    isRegister: boolean,
+    loginAsClient: boolean,
+}) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const [loginAsClient, setLoginAsClient] = useState(true)
 
     return (
         <Flex
@@ -47,6 +53,7 @@ export default function LoginContainer() {
                 onSubmit={(event) => {
                     event.preventDefault()
                     console.log('Formulário enviado!')
+                    window.location.href = '/provider'
                 }}
             >
                 <Flex direction="column" gap="0.5rem" >
@@ -73,7 +80,7 @@ export default function LoginContainer() {
                             />
                         </InputGroup>
                 </Flex>
-                <Flex direction="column" gap="0.5rem" display={loginAsClient ? "flex" : "none"}>
+                <Flex direction="column" gap="0.5rem" display={loginAsClient ? "none" : "flex"}>
                     <Text className="text-xs">
                         Senha
                     </Text>
@@ -146,10 +153,10 @@ export default function LoginContainer() {
                         color: '#1E40AF',
                     }}
                     onClick={() => {
-                        setLoginAsClient(!loginAsClient)
+                        setIsRegister(!isRegister)
                     }}
                 >
-                    Entrar como {loginAsClient ? 'Cliente' : 'Prestador de Serviço'}
+                    {!isRegister && 'Não tem uma conta? Criar uma conta'}
                 </Text>
             </Flex>
         </Flex>
