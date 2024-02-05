@@ -1,24 +1,8 @@
 import {
     Flex,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-    Button,
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
 
 export default function Test(){
-
-    const { isOpen, onOpen, onClose } = useDisclosure()
-
-    useEffect(() => {
-        onOpen()
-    }, [])
 
     return (
         <Flex
@@ -27,24 +11,8 @@ export default function Test(){
             flexDir='column'
             justifyContent='center'
             alignItems='center'
+            bg='#FFF'
         >
-            <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader>Modal Title</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    Batata
-                </ModalBody>
-    
-                <ModalFooter>
-                <Button colorScheme='blue' mr={3} onClick={onClose}>
-                    Close
-                </Button>
-                <Button variant='ghost'>Secondary Action</Button>
-                </ModalFooter>
-            </ModalContent>
-            </Modal>
         </Flex>
     )
 }

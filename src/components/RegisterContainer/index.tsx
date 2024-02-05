@@ -3,6 +3,9 @@ import {
     Text,
 } from '@chakra-ui/react'
 import { useState } from 'react'
+import Register from './Register'
+import EmailValidation from '../EmailValidation'
+import CreatePassword from '../CreatePassword'
 
 export default function RegisterContainer() {
 
@@ -36,6 +39,11 @@ export default function RegisterContainer() {
                     'Criar Senha'
                 }
             </Text>
+            {
+                section === 0 ? <Register setSection={setSection} /> :
+                section === 1 ? <EmailValidation setSection={setSection} /> :
+                <CreatePassword />
+            }
         </Flex>
     )
 }

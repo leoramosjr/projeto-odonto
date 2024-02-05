@@ -1,9 +1,10 @@
 import {
     Flex,
     Button,
+    Tooltip,
 } from '@chakra-ui/react'
 import ProjetinhoLogo from '../../assets/images/ProjetinhoLogo.svg';
-import { FiHome, FiFile, FiPieChart, FiHelpCircle } from "react-icons/fi";
+import { FiHome, FiFile, FiPieChart, FiHelpCircle, FiLogOut } from "react-icons/fi";
 
 export default function Sidebar({
     section,
@@ -12,6 +13,22 @@ export default function Sidebar({
     section: number,
     setSection: Function,
 }) {
+
+    const navButtons = [
+        {
+            icon: <FiHome />,
+            label: "Home",
+        },
+        {
+            icon: <FiFile />,
+            label: "Planos",
+        },
+        {
+            icon: <FiPieChart />,
+            label: "Dashboard (em breve)",
+        },
+    ]
+
     return (
         <Flex
             h="100vh"
@@ -40,69 +57,101 @@ export default function Sidebar({
                     align="center"
                     minW="32px"
                 >
-                    <Button
-                        bgColor={section === 0 ? "#3B82F6" : "#F8F9FE"}
-                        h="40px"
-                        w="32px
-                        !important"
-                        p="0"
-                        borderRadius="10px"
-                        onClick={() => section !== 0 && setSection(0)}
-                        _hover={{
-                            bg: section !== 0 && "#E2E8F0",
-                        }}
-                        title="Home"
-                    >
-                        <FiHome color={section === 0 ? "white" : "#1A202C"}/>
-                    </Button>
-                    <Button
-                        bgColor={section === 1 ? "#3B82F6" : "#F8F9FE"}
-                        h="40px"
-                        w="32px
-                        !important"
-                        p="0"
-                        borderRadius="10px"
-                        onClick={() => section !== 1 && setSection(1)}
-                        _hover={{
-                            bg: section !== 1 && "#E2E8F0",
-                        }}
-                        title="Planos"
-                    >
-                        <FiFile color={section === 1 ? "white" : "#1A202C"}/>
-                    </Button>
-                    <Button
-                        bgColor={section === 2 ? "#3B82F6" : "#F8F9FE"}
-                        h="40px"
-                        w="32px
-                        !important"
-                        p="0"
-                        borderRadius="10px"
-                        // onClick={() => section !== 2 && setSection(2)}
-                        _hover={{
-                            bg: section !== 2 && "#E2E8F0",
-                        }}
-                        title="Dashboard (em breve)"
-                        disabled={true}
-                        cursor="default"
-                    >
-                        <FiPieChart color={section === 2 ? "white" : "#1A202C"}/>
-                    </Button>
+                    {navButtons.map((button, index) => (
+                        <Tooltip
+                            key={index}
+                            placement="right"
+                            color="black"
+                            bg="white"
+                            borderRadius="0.5rem"
+                            px="0.75rem"
+                            py="0.5rem"
+                            label={button.label}
+                            aria-label={button.label}
+                        >
+                            <Button
+                                key={index}
+                                bgColor={section === index ? "#0075EB" : "transparent"}
+                                color={section === index ? "white" : "#333333"}
+                                h="40px"
+                                w="32px
+                                !important"
+                                p="0"
+                                borderRadius="10px"
+                                _hover={{
+                                    bg: section !== index && "#E2E8F0"
+                                }}
+                                onClick={() => {
+                                    setSection(index)
+                                }}
+                            >
+                                {button.icon}
+                            </Button>
+                        </Tooltip>
+                    ))}
                 </Flex>
             </Flex>
-            <Button
-                bgColor="#F8F9FE"
-                h="40px"
-                w="32px
-                !important"
-                p="0"
-                borderRadius="50%"
-                title="Ajuda"
-                onClick={() => {
-                    window.open('https://wa.me/5551999303433', '_blank')
-                }}
+            <Flex
+                direction="column"
+                align="center"
+                gap="1.5rem"
             >
-                <FiHelpCircle />
-            </Button>
+                <Tooltip
+                    placement="right"
+                    color="black"
+                    bg="white"
+                    borderRadius="0.5rem"
+                    px="0.75rem"
+                    py="0.5rem"
+                    label="Ajuda"
+                    aria-label="A tooltip"
+                    closeOnClick={false}
+                >
+                    <Button
+                        bgColor="#F8F9FE"
+                        h="40px"
+                        w="32px
+                        !important"
+                        p="0"
+                        borderRadius="50%"
+                        title="Ajuda"
+                        onClick={() => {
+                            window.open('https://wa.me/5551999303433', '_blank')
+                        }}
+                    >
+                        <FiHelpCircle />
+                    </Button>
+                </Tooltip>
+                <Tooltip
+                    placement="right"
+                    color="black"
+                    bg="white"
+                    borderRadius="0.5rem"
+                    px="0.75rem"
+                    py="0.5rem"
+                    label="Sair"
+                    aria-label="A tooltip"
+                    closeOnClick={false}
+                >
+                    <Button
+                        bgColor="#3B82F6"
+                        color="white"
+                        h="40px"
+                        w="32px
+                        !important"
+                        p="0"
+                        borderRadius="10px"
+                        _hover={{
+                            background: "#2859a9",
+                        }}
+                        onClick={() => {
+                            window.open('/', '_self')
+                        }}
+                    >
+                        <FiLogOut />
+                    </Button>
+                </Tooltip>
+            </Flex>
         </Flex>
     )
 }

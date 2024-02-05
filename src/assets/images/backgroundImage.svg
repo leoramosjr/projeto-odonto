@@ -1,7 +1,7 @@
 <svg width="1440" height="598" viewBox="0 0 1440 598" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g clip-path="url(#clip0_394_756)">
-<g clip-path="url(#clip1_394_756)">
-<g clip-path="url(#clip2_394_756)">
+<g clipPath="url(#clip0_394_756)">
+<g clipPath="url(#clip1_394_756)">
+<g clipPath="url(#clip2_394_756)">
 <mask id="mask0_394_756" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="8" width="1440" height="1266">
 <path d="M0 8.19238H1440V1273.19H0V8.19238Z" fill="white"/>
 </mask>
@@ -13,8 +13,8 @@
 </g>
 </g>
 </g>
-<g clip-path="url(#clip3_394_756)">
-<g clip-path="url(#clip4_394_756)">
+<g clipPath="url(#clip3_394_756)">
+<g clipPath="url(#clip4_394_756)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M1440 0.692383H0V457.536L2.89125 450.671C28.8188 389.115 84.1213 344.847 149.863 333.03L1267.5 132.111C1330.28 120.826 1394.47 140.586 1440 184.849V0.692383Z" fill="#FAFBFC"/>
 </g>
 </g>

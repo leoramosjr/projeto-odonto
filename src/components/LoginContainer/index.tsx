@@ -64,7 +64,6 @@ export default function LoginContainer({
                             <InputLeftElement pointerEvents='none' color="#87909E">
                                 <FiMail size={20} />
                             </InputLeftElement>
-                    
                             <Input
                                 type="email"
                                 name="email"
@@ -84,42 +83,40 @@ export default function LoginContainer({
                     <Text className="text-xs">
                         Senha
                     </Text>
-                        <InputGroup>
-                            <InputLeftElement pointerEvents='none' color="#87909E">
-                                <FiLock size={20} />
-                            </InputLeftElement>
-                    
-                            <Input
-                                type="password"
-                                name="password"
-                                placeholder="Digite sua senha"
+                    <InputGroup>
+                        <InputLeftElement pointerEvents='none' color="#87909E">
+                            <FiLock size={20} />
+                        </InputLeftElement>
+                        <Input
+                            type="password"
+                            name="password"
+                            placeholder="Digite sua senha"
+                            w="100%"
+                            h="2.5rem"
+                            border="solid 1px #D6D9DE"
+                            borderRadius="0.5rem"
+                            value={password}
+                            onChange={(event) => {
+                                setPassword(event.target.value)
+                            }}
+                        />
+                        <InputRightElement hidden={!(password === "")} w="auto" pr="0.75rem">
+                            <Text
                                 w="100%"
-                                h="2.5rem"
-                                border="solid 1px #D6D9DE"
-                                borderRadius="0.5rem"
-                                value={password}
-                                onChange={(event) => {
-                                    setPassword(event.target.value)
+                                color="#3B82F6"
+                                fontSize="0.75rem"
+                                lineHeight="1.125rem"
+                                cursor="pointer"
+                                transition="all 0.1s ease-in-out"
+                                _hover={{
+                                    textDecoration: 'underline',
+                                    color: '#1E40AF',
                                 }}
-                            />
-
-                            <InputRightElement hidden={!(password === "")} w="auto" pr="0.75rem">
-                                <Text
-                                    w="100%"
-                                    color="#3B82F6"
-                                    fontSize="0.75rem"
-                                    lineHeight="1.125rem"
-                                    cursor="pointer"
-                                    transition="all 0.1s ease-in-out"
-                                    _hover={{
-                                        textDecoration: 'underline',
-                                        color: '#1E40AF',
-                                    }}
-                                >
-                                    Esqueceu sua senha?
-                                </Text>
-                            </InputRightElement>
-                        </InputGroup>
+                            >
+                                Esqueceu sua senha?
+                            </Text>
+                        </InputRightElement>
+                    </InputGroup>
                 </Flex>
                 <Button
                     type="submit"
@@ -156,7 +153,7 @@ export default function LoginContainer({
                         setIsRegister(!isRegister)
                     }}
                 >
-                    {!isRegister && 'Não tem uma conta? Criar uma conta'}
+                    {!isRegister && !loginAsClient && 'Não tem uma conta? Criar uma conta'}
                 </Text>
             </Flex>
         </Flex>
