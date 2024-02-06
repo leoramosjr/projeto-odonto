@@ -14,6 +14,7 @@ import {
 import { useState } from "react";
 import Input from "../base/Input";
 import Autocomplete from "../base/Autocomplete";
+import Select from "../base/Select";
 
 interface NewChargeModalData {
     name: string,
@@ -85,6 +86,14 @@ export default function NewChargeModal({
         "Matheus",
     ]
 
+    const plans = [
+        "Plano 1",
+        "Plano 2",
+        "Plano 3",
+        "Plano 4",
+        "Plano 5",
+    ]
+
     const [hasTaxesAndFines, setHasTaxesAndFines] = useState(false)
 
     return (
@@ -154,6 +163,13 @@ export default function NewChargeModal({
                 type="email"
                 value={formData.email.value}
                 onChange={(value: string) => setFormData({...formData, email: {checked: formData.email.checked, value: value}})}
+            />
+            <Select
+                name="plan"
+                label="Plano"
+                value={formData.plan}
+                onChange={(value: string) => setFormData({...formData, plan: value})}
+                optionsList={plans}
             />
             <Input
                 name="dueDate"
