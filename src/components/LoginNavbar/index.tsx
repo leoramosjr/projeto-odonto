@@ -11,15 +11,14 @@ export default function LoginNavbar({
     loginAsClient,
     setLoginAsClient,
     isRegister,
-    setIsRegister,
 } : {
     loginAsClient: boolean,
     setLoginAsClient: Function,
     isRegister: boolean,
-    setIsRegister: Function,
 }) {
     return (
         <Flex
+            h="4rem"
             w="100vw"
             px="3rem"
             pt="2rem"
@@ -46,6 +45,7 @@ export default function LoginNavbar({
                 </Text>
             </a>
             <Button
+                hidden={isRegister}
                 bg="transparent"
                 color="#1E40AF"
                 fontSize="1rem"
@@ -56,7 +56,6 @@ export default function LoginNavbar({
                 textAlign="center"
                 border="1px solid #1E40AF"
                 onClick={() => {
-                    isRegister && setIsRegister(!isRegister)
                     setLoginAsClient(!loginAsClient)
                 }}
             >

@@ -3,14 +3,14 @@ import {
     Text,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import Register from './Register'
 import EmailValidation from '../EmailValidation'
 import CreatePassword from '../CreatePassword'
+import EmailInput from './EmailInput'
 
-export default function RegisterContainer({
-    setIsRegister,
+export default function ResetPassword({
+    setIsNewPassword,
 } : {
-    setIsRegister: Function
+    setIsNewPassword: Function
 }) {
 
     const [section, setSection] = useState(0)    
@@ -18,7 +18,7 @@ export default function RegisterContainer({
     return (
         <Flex
             mt="2.25rem"
-            w="35.625rem"
+            w="30rem"
             h="fit-content"
             direction="column"
             align="center"
@@ -39,13 +39,13 @@ export default function RegisterContainer({
                 lineHeight="1.73794rem"
             >
                 {
-                    section === 0 ? 'Registro' :
+                    section === 0 ? 'Recuperação de Senha' :
                     section === 1 ? 'Validação' :
                     'Nova Senha'
                 }
             </Text>
             {
-                section === 0 ? <Register setSection={setSection} setIsRegister={setIsRegister} /> :
+                section === 0 ? <EmailInput setIsNewPassword={setIsNewPassword} setSection={setSection} /> :
                 section === 1 ? <EmailValidation setSection={setSection} /> :
                 <CreatePassword />
             }

@@ -5,12 +5,14 @@ import LoginContainer from "../../components/LoginContainer"
 import BackgroundImage from '../../assets/images/backgroundImage.svg'
 import LoginNavbar from '../../components/LoginNavbar'
 import RegisterContainer from '../../components/RegisterContainer'
+import ResetPassword from '../../components/ResetPassword'
 
 import { useState } from 'react'
 
 export default function LoginPage() {
 
     const [isRegister, setIsRegister] = useState(false)
+    const [isNewPassword, setIsNewPassword] = useState(false)
     const [loginAsClient, setLoginAsClient] = useState(false)
 
     return (
@@ -29,16 +31,16 @@ export default function LoginPage() {
             <LoginNavbar
                 setLoginAsClient={setLoginAsClient}
                 loginAsClient={loginAsClient}
-                setIsRegister={setIsRegister}
-                isRegister={isRegister}
+                isRegister={isRegister || isNewPassword}
             />
             {
-                isRegister ?
-                <RegisterContainer /> :
+                isRegister ? <RegisterContainer setIsRegister={setIsRegister} /> :
+                isNewPassword ? <ResetPassword setIsNewPassword={setIsNewPassword} /> :
                 <LoginContainer
                     setIsRegister={setIsRegister}
                     isRegister={isRegister}
                     loginAsClient={loginAsClient}
+                    setIsNewPassword={setIsNewPassword}
                 />
             }
         </Flex>

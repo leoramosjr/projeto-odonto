@@ -2,20 +2,21 @@ import {
     Flex,
     Text,
     Button,
-    InputGroup,
     InputLeftElement,
-    Input,
     InputRightElement,
 } from '@chakra-ui/react'
+import Input from '../base/Input'
 import { FiMail, FiLock } from 'react-icons/fi'
 import { useState } from 'react'
 
 export default function LoginContainer({
     setIsRegister,
+    setIsNewPassword,
     isRegister,
     loginAsClient,
 } : {
     setIsRegister: Function,
+    setIsNewPassword: Function,
     isRegister: boolean,
     loginAsClient: boolean,
 }) {
@@ -56,50 +57,34 @@ export default function LoginContainer({
                     window.location.href = '/provider'
                 }}
             >
-                <Flex direction="column" gap="0.5rem" >
-                    <Text className="text-xs">
-                        Email
-                    </Text>
-                        <InputGroup>
-                            <InputLeftElement pointerEvents='none' color="#87909E">
-                                <FiMail size={20} />
-                            </InputLeftElement>
-                            <Input
-                                type="email"
-                                name="email"
-                                placeholder="Digite seu e-mail"
-                                w="100%"
-                                h="2.5rem"
-                                border="solid 1px #D6D9DE"
-                                borderRadius="0.5rem"
-                                value={email}
-                                onChange={(event) => {
-                                    setEmail(event.target.value)
-                                }}
-                            />
-                        </InputGroup>
-                </Flex>
-                <Flex direction="column" gap="0.5rem" display={loginAsClient ? "none" : "flex"}>
-                    <Text className="text-xs">
-                        Senha
-                    </Text>
-                    <InputGroup>
+                <Input
+                    display={true}
+                    name="email"
+                    label="Email"
+                    type="email"
+                    placeholder="Digite seu e-mail"
+                    value={email}
+                    onChange={(value: string) => setEmail(value)}
+                    leftChildren={
+                        <InputLeftElement pointerEvents='none' color="#87909E">
+                            <FiMail size={20} />
+                        </InputLeftElement>
+                    }
+                />
+                <Input
+                    display={!loginAsClient}
+                    name="password"
+                    label="Senha"
+                    type="password"
+                    placeholder="Digite sua senha"
+                    value={password}
+                    onChange={(value: string) => setPassword(value)}
+                    leftChildren={
                         <InputLeftElement pointerEvents='none' color="#87909E">
                             <FiLock size={20} />
                         </InputLeftElement>
-                        <Input
-                            type="password"
-                            name="password"
-                            placeholder="Digite sua senha"
-                            w="100%"
-                            h="2.5rem"
-                            border="solid 1px #D6D9DE"
-                            borderRadius="0.5rem"
-                            value={password}
-                            onChange={(event) => {
-                                setPassword(event.target.value)
-                            }}
-                        />
+                    }
+                    rightChildren={
                         <InputRightElement hidden={!(password === "")} w="auto" pr="0.75rem">
                             <Text
                                 w="100%"
@@ -112,12 +97,15 @@ export default function LoginContainer({
                                     textDecoration: 'underline',
                                     color: '#1E40AF',
                                 }}
+                                onClick={() => {
+                                    setIsNewPassword(true)
+                                }}
                             >
                                 Esqueceu sua senha?
                             </Text>
                         </InputRightElement>
-                    </InputGroup>
-                </Flex>
+                    }
+                />
                 <Button
                     type="submit"
                     w="100%"
@@ -138,6 +126,7 @@ export default function LoginContainer({
                 w="100%"
                 justify="center"
                 align="center"
+                display={!loginAsClient ? "flex" : "none"}
             >
                 <Text
                     color="#3B82F6"
@@ -153,7 +142,7 @@ export default function LoginContainer({
                         setIsRegister(!isRegister)
                     }}
                 >
-                    {!isRegister && !loginAsClient && 'Não tem uma conta? Criar uma conta'}
+                    Não tem uma conta? Criar uma conta
                 </Text>
             </Flex>
         </Flex>

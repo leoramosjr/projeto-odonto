@@ -32,7 +32,7 @@ export default function ProviderHome() {
                 <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <NewChargeModal />
+                    <NewChargeModal onClose={onClose} />
                 </ModalBody>
             </ModalContent>
             </Modal>

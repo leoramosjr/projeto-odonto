@@ -40,7 +40,11 @@ interface NewChargeModalData {
     }
 }
 
-export default function NewChargeModal() {
+export default function NewChargeModal({
+    onClose,
+} : {
+    onClose: Function
+}) {
 
     const [formData, setFormData] = useState<NewChargeModalData>({
         name: "",
@@ -266,6 +270,7 @@ export default function NewChargeModal() {
                 _hover={{
                     bg: "#2F55CC"
                 }}
+                onClick={() => onClose()}
             >
                 Criar cobrança
             </Button>
