@@ -21,7 +21,7 @@ export default function ProviderDashboard() {
                 textAlign="center"
                 fontFamily="Circo"
             >
-                Page under construction
+                Dashboard page is under construction
             </Text>
             <Text
                 fontSize="1rem"

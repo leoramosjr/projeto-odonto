@@ -8,7 +8,7 @@ export default function ProviderPlans() {
     return (
         <Flex
             w="100%"
-            h="100%"
+            minH="100%"
             direction="column"
             align="center"
             justify="center"
@@ -21,7 +21,7 @@ export default function ProviderPlans() {
                 textAlign="center"
                 fontFamily="Circo"
             >
-                Page under construction
+                Plans page is under construction
             </Text>
             <Text
                 fontSize="1rem"

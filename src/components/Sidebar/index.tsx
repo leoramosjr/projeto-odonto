@@ -25,7 +25,7 @@ export default function Sidebar({
         },
         {
             icon: <FiPieChart />,
-            label: "Dashboard (em breve)",
+            label: "Dashboard",
         },
     ]
 

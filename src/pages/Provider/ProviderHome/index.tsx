@@ -27,14 +27,14 @@ export default function ProviderHome() {
             gap="2rem"
         >
             <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    <NewChargeModal onClose={onClose} />
-                </ModalBody>
-            </ModalContent>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <NewChargeModal onClose={onClose} />
+                    </ModalBody>
+                </ModalContent>
             </Modal>
             <Flex
                 w="100%"
@@ -91,8 +91,8 @@ export default function ProviderHome() {
                 gap="1rem"
             >
                 {
-                    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((e) => (
-                        <ClientCard key={e} />
+                    Array(21).fill("").map((e, index) => (
+                        <ClientCard key={e + index} />
                     ))
                 }
             </Flex>

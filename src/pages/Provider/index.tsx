@@ -49,14 +49,11 @@ export default function Provider() {
 
     return (
         <Flex
-            w="100vw"
-            h="100vh"
-            justify="flex-start"
-            align="center"
+            maxW="100vw"
+            minH="100vh"
             bg="#FCFCFC"
-            p="2rem 1.5rem 1rem 6.5rem"
+            p="2rem 1.5rem 2rem 6.5rem"
             direction="column"
-            gap="2rem"
         >
             <Sidebar
                 section={section}
@@ -64,42 +61,52 @@ export default function Provider() {
             />
             <Flex
                 w="100%"
+                minH="calc(100vh - 4rem)"
+                bg="white"
+                borderRadius="0.5rem"
+                boxShadow="7px 4px 18.4px 0px rgba(0, 107, 215, 0.15)"
+                p="2rem 1.5rem 4rem 1.5rem"
+                direction="column"
+                justify="flex-start"
                 align="center"
+                gap="2rem"
             >
-                <Text
-                    fontSize="1.65rem"
-                    fontWeight="600"
-                    fontFamily="Dm Sans"
-                >
-                    Clínica do Soren
-                </Text>
-                <Tooltip
-                    placement="right-end"
-                    color="black"
-                    bg="white"
-                    borderRadius="0.5rem"
-                    px="1rem"
-                    py="1rem"
-                    maxW="16rem"
-                    label={tooltipChildren()}
-                    aria-label="A tooltip"
-                    closeOnClick={false}
-                >
-                    <img
-                        src={isVerifyed ? Verifyed : NotVerifyed}
-                        alt="verifyed"
-                        style={{marginLeft: "1rem"}}
-                        draggable="false"
-                        onClick={() => setIsVerifyed(!isVerifyed)}
-                    />
-                </Tooltip>
+                <Flex w="100%" align="center">
+                    <Text
+                        fontSize="1.65rem"
+                        fontWeight="600"
+                        fontFamily="Dm Sans"
+                    >
+                        Clínica do Soren
+                    </Text>
+                    <Tooltip
+                        placement="right-end"
+                        color="black"
+                        bg="white"
+                        borderRadius="0.5rem"
+                        px="1rem"
+                        py="1rem"
+                        maxW="16rem"
+                        label={tooltipChildren()}
+                        aria-label="A tooltip"
+                        closeOnClick={false}
+                    >
+                        <img
+                            src={isVerifyed ? Verifyed : NotVerifyed}
+                            alt="verifyed"
+                            style={{marginLeft: "1rem"}}
+                            draggable="false"
+                            onClick={() => setIsVerifyed(!isVerifyed)}
+                        />
+                    </Tooltip>
+                </Flex>
+                {
+                    section === 0 ? <ProviderHome /> :
+                    section === 1 ? <ProviderPlans /> :
+                    section === 2 ? <ProviderDashboard /> :
+                    null
+                }
             </Flex>
-            {
-                section === 0 ? <ProviderHome /> :
-                section === 1 ? <ProviderPlans /> :
-                section === 2 ? <ProviderDashboard /> :
-                null
-            }
         </Flex>
     )
 }

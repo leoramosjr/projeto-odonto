@@ -10,15 +10,15 @@ export default function ClientCard() {
     return (
         <Flex
             w="100%"
-            maxW="14.875rem"
-            h="100%"
-            maxH="16.8125rem"
+            maxW="14.55rem"
+            h="18rem"
             align="center"
             direction="column"
-            bg="white"
+            bg="#FCFCFC"
             p="1rem 1.63rem 1.56rem"
             borderRadius="0.50656rem"
             justify="space-between"
+            border="1px solid #E5E5E5"
         >
             <Flex
                 w="2.375rem"
