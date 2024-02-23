@@ -5,29 +5,31 @@ import {
 } from '@chakra-ui/react'
 import ProjetinhoLogo from '../../assets/images/ProjetinhoLogo.svg';
 import { FiHome, FiFile, FiPieChart, FiHelpCircle, FiLogOut } from "react-icons/fi";
+import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function Sidebar({
-    section,
-    setSection,
-} : {
-    section: number,
-    setSection: Function,
-}) {
+export default function Sidebar() {
 
     const navButtons = [
         {
             icon: <FiHome />,
             label: "Home",
+            route: "/provider/home"
         },
         {
             icon: <FiFile />,
             label: "Planos",
+            route: "/provider/plans"
         },
         {
             icon: <FiPieChart />,
             label: "Dashboard",
+            route: "/provider/dashboard"
         },
     ]
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const section = navButtons.findIndex(button => button.route === location.pathname)
 
     return (
         <Flex
@@ -82,7 +84,7 @@ export default function Sidebar({
                                     bg: section !== index && "#E2E8F0"
                                 }}
                                 onClick={() => {
-                                    setSection(index)
+                                    navigate(button.route)
                                 }}
                             >
                                 {button.icon}

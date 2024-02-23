@@ -4,17 +4,19 @@ import {
     Tooltip,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import ProviderHome from './ProviderHome'
-import ProviderPlans from './ProviderPlans'
-import ProviderDashboard from './ProviderDashboard'
 import Sidebar from '../../components/Sidebar'
 import Verifyed from '../../assets/images/verifyed.svg'
 import NotVerifyed from '../../assets/images/notVerifyed.svg'
+import { useLocation } from 'react-router-dom'
 
-export default function Provider() {
+export default function Provider({
+    children,
+} : {
+    children?: React.ReactNode
+}) {
 
-    const [section, setSection] = useState(0)
     const [isVerifyed, setIsVerifyed] = useState(true)
+    const page = useLocation()
 
     function tooltipChildren() {
         return (
@@ -55,10 +57,7 @@ export default function Provider() {
             p="2rem 1.5rem 2rem 6.5rem"
             direction="column"
         >
-            <Sidebar
-                section={section}
-                setSection={setSection}
-            />
+            <Sidebar />
             <Flex
                 w="100%"
                 minH="calc(100vh - 4rem)"
@@ -71,7 +70,11 @@ export default function Provider() {
                 align="center"
                 gap="2rem"
             >
-                <Flex w="100%" align="center">
+                <Flex
+                    display={page.pathname.includes("/client") ? "none" : "flex"}
+                    w="100%"
+                    align="center"
+                >
                     <Text
                         fontSize="1.65rem"
                         fontWeight="600"
@@ -100,12 +103,7 @@ export default function Provider() {
                         />
                     </Tooltip>
                 </Flex>
-                {
-                    section === 0 ? <ProviderHome /> :
-                    section === 1 ? <ProviderPlans /> :
-                    section === 2 ? <ProviderDashboard /> :
-                    null
-                }
+                {children}
             </Flex>
         </Flex>
     )

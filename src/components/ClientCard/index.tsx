@@ -6,7 +6,11 @@ import {
 } from '@chakra-ui/react'
 import { FiPhone, FiMail } from "react-icons/fi";
 
-export default function ClientCard() {
+export default function ClientCard({
+    onCardClick,
+} : {
+    onCardClick: Function
+}) {
     return (
         <Flex
             w="100%"
@@ -19,6 +23,13 @@ export default function ClientCard() {
             borderRadius="0.50656rem"
             justify="space-between"
             border="1px solid #E5E5E5"
+            cursor="pointer"
+            onClick={() => onCardClick()}
+            transition="0.2s"
+            _hover={{
+                boxShadow: "0px 4px 4px 0px rgba(53, 53, 53, 0.12)",
+                bg: "#FFF"
+            }}
         >
             <Flex
                 w="2.375rem"
