@@ -13,60 +13,23 @@ import {
 import { FiPlus, FiMail, FiCalendar, FiPhone, FiMapPin, FiLogOut, FiDollarSign, FiClipboard, FiLogIn, FiRefreshCw, FiLayout } from 'react-icons/fi';
 import CardSingleData from '../../../components/CardSingleData';
 import Provider from '..';
+import { mockClients } from '../../../mocks/clients.js';
+import { useParams } from 'react-router-dom';
 
 export default function ProviderClientView() {
+
+    const userId = useParams()
+    const userData = mockClients.find((item) => item.id.toString() === userId.id)
     
-    const mock = [
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-        {
-            emissionDate: "11/11/2023",
-            dueDate: "11/11/2023",
-            value: "R$250,00",
-            paymentDate: "11/11/2023",
-            status: "Pago"
-        },
-    ]
+    document.title = `${userData?.name} | Creatus Pay`
+
+    function cellphoneMask(value: string | undefined) {
+        if (value) return value
+            .replace(/\D/g, '')
+            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{5})(\d)/, '$1-$2')
+            .replace(/(-\d{4})\d+?$/, '$1')
+    }
 
     return (
         <Provider>
@@ -88,7 +51,7 @@ export default function ProviderClientView() {
                             fontWeight="600"
                             fontFamily="Dm Sans"
                         >
-                            Leonardo Severo Furini
+                            {userData?.name}
                         </Text>
                     </Flex>
                     <Button
@@ -144,24 +107,24 @@ export default function ProviderClientView() {
                             <CardSingleData
                                 icon={<FiMail />}
                                 title="Email"
-                                info="leo.ramosjr@gmail.com"
+                                info={userData?.email}
                             />
                             <CardSingleData
                                 icon={<FiCalendar />}
                                 title="Idade"
-                                info="24 anos"
+                                info={userData?.age + " anos"}
                             />
                         </Flex>
                         <CardSingleData
                             icon={<FiPhone  />}
                             title="Telefone"
-                            info="(51) 99304-3856"
+                            info={cellphoneMask(userData?.celphone)}
                         />
                         <Divider />
                         <CardSingleData
                             icon={<FiMapPin />}
                             title="Endereço"
-                            info="R. Ciclano Fulanilson, 45 Bairro Barão, Porto Alegre, RS"
+                            info={userData?.address}
                         />
                     </Flex>
                     <Flex
@@ -195,19 +158,19 @@ export default function ProviderClientView() {
                             <CardSingleData
                                 icon={<FiLogOut />}
                                 title="Último Pagamento"
-                                info="11/11/2023"
+                                info={new Intl.DateTimeFormat('pt-BR').format(new Date(userData?.lastPayment ?? ''))}
                             />
                             <Flex w="55%">
                                 <CardSingleData
                                     icon={<FiDollarSign />}
                                     title="Valor"
-                                    info="R$250,00"
+                                    info={userData?.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
                                     width="50%"
                                 />
                                 <CardSingleData
                                     icon={<FiClipboard  />}
                                     title="Plano"
-                                    info="Combo semanal"
+                                    info={userData?.plan}
                                     width="50%"
                                 />
                             </Flex>
@@ -221,19 +184,19 @@ export default function ProviderClientView() {
                             <CardSingleData
                                 icon={<FiLogIn />}
                                 title="Próximo Pagamento"
-                                info="09/12/2023"
+                                info={new Intl.DateTimeFormat('pt-BR').format(new Date(userData?.nextPayment ?? ''))}
                             />
                             <Flex w="55%">
                                 <CardSingleData
                                     icon={<FiRefreshCw  />}
                                     title="Recorrência"
-                                    info="6 meses"
+                                    info={userData?.recurrence}
                                     width="50%"
                                 />
                                 <CardSingleData
                                     icon={<FiLayout  />}
                                     title="Status"
-                                    info="60% / 40%"
+                                    info={userData?.status}
                                     width="50%"
                                 />
                             </Flex>
@@ -268,13 +231,13 @@ export default function ProviderClientView() {
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {mock.map((item, index) => (
+                                {userData?.history.map((item, index) => (
                                     <Tr key={index}>
-                                        <Td>{item.emissionDate}</Td>
-                                        <Td>{item.dueDate}</Td>
-                                        <Td>{item.value}</Td>
-                                        <Td>{item.paymentDate}</Td>
-                                        <Td>Ver Detalhes</Td>
+                                        <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.emissionDate ?? ''))}</Td>
+                                        <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.dueDate ?? ''))}</Td>
+                                        <Td>{item.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</Td>
+                                        <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.payDay ?? ''))}</Td>
+                                        <Td><Button /><Button /><Button /></Td>
                                         <Td>{item.status}</Td>
                                     </Tr>
                                 ))}

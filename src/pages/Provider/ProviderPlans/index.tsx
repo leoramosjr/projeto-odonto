@@ -6,6 +6,9 @@ import WorkingPotato from '../../../assets/images/workingPotato.png'
 import Provider from '../index'
 
 export default function ProviderPlans() {
+    
+    document.title = `Planos | Creatus Pay`
+
     return (
         <Provider>
             <Flex

@@ -4,9 +4,9 @@ import {
 } from '@chakra-ui/react'
 
 interface CardSingleDataProps {
-    icon: any,
-    title: string,
-    info: string,
+    icon?: any,
+    title?: string,
+    info?: string,
     width?: string,
     props?: any,
 }

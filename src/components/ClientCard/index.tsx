@@ -8,8 +8,20 @@ import { FiPhone, FiMail } from "react-icons/fi";
 
 export default function ClientCard({
     onCardClick,
+    name,
+    lastPayment,
+    nextPayment,
+    price,
+    recurrence,
+    plan,
 } : {
     onCardClick: Function
+    name: string,
+    lastPayment: string,
+    nextPayment: string,
+    price: number,
+    recurrence: string,
+    plan: string,
 }) {
     return (
         <Flex
@@ -48,7 +60,7 @@ export default function ClientCard({
                     lineHeight="1.6rem"
                     textAlign="center"
                 >
-                    FS
+                    {name[0]}
                 </Text>
             </Flex>
             <Text
@@ -60,15 +72,19 @@ export default function ClientCard({
                 lineHeight="1.6rem"
                 textAlign="center"
             >
-                Fulano da Silva
+                {name}
             </Text>
             <Flex textAlign="center" w="100%" direction="column" align="center" fontSize="0.6rem">
                 <Text>Proximo pagamento</Text>
-                <Text color="#00A868">11/02/2024</Text>
+                <Text color="#00A868">
+                    {new Intl.DateTimeFormat('pt-BR').format(new Date(nextPayment))}
+                </Text>
             </Flex>
             <Flex textAlign="center" w="100%" direction="column" align="center" fontSize="0.6rem">
                 <Text>Último pagamento</Text>
-                <Text color="#0075EB">11/01/2024</Text>
+                <Text color="#0075EB">
+                    {new Intl.DateTimeFormat('pt-BR').format(new Date(lastPayment))}
+                </Text>
             </Flex>
             <Flex gap="1.25rem" justify="center">
                 <Flex
@@ -81,7 +97,7 @@ export default function ClientCard({
                     boxShadow="0px 4px 4px 0px rgba(53, 53, 53, 0.12)"
                     textAlign="center"
                 >
-                    <Text color="#8F8EA6" fontSize="0.75rem">Recorrência</Text>
+                    <Text color="#8F8EA6" fontSize="0.75rem">{recurrence}</Text>
                     <Flex
                         align="center"
                         gap="0.25rem"
@@ -104,7 +120,7 @@ export default function ClientCard({
                             letterSpacing="0.00644rem"
                             lineHeight="1rem"
                         >
-                            6 meses
+                            {plan}
                         </Text>
                     </Flex>
                 </Flex>
@@ -141,7 +157,7 @@ export default function ClientCard({
                             letterSpacing="0.00644rem"
                             lineHeight="1rem"
                         >
-                            R$200,00
+                            {price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </Text>
                     </Flex>
                 </Flex>

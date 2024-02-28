@@ -54,7 +54,7 @@ export default function LoginContainer({
                 onSubmit={(event) => {
                     event.preventDefault()
                     console.log('Formulário enviado!')
-                    window.location.href = '/provider'
+                    window.location.href = '/provider/home'
                 }}
             >
                 <Input

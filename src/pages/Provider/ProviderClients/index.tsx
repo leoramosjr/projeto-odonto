@@ -12,16 +12,36 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from "react-icons/fi";
-import ClientCard from '../../../components/ClientCard'
-import NewChargeModal from '../../../components/NewChargeModal';
+import ClientCard from '../../../components/ClientCard/index.js'
+import NewChargeModal from '../../../components/NewChargeModal/index.js';
 import { useNavigate } from 'react-router-dom';
-import Provider from '../index'
+import Provider from '../index';
+import { useState } from 'react';
+import { mockClients } from '../../../mocks/clients.js';
 
-export default function ProviderHome() {
+interface ClientCardData {
+    id: number,
+    name: string,
+    email: string,
+    age: number,
+    celphone: string,
+    address: string,
+    lastPayment: string,
+    nextPayment: string,
+    price: number,
+    recurrence: string,
+    plan: string,
+    status: string
+}
 
+export default function ProviderClients() {
+
+    const [filteredData, setFilteredData] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const navigate = useNavigate();  
-
+    const navigate = useNavigate();
+    
+    document.title = 'Clientes | Creatus Pay';
+    
     return (
         <Provider>
             <Flex
@@ -36,7 +56,10 @@ export default function ProviderHome() {
                         <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            <NewChargeModal onClose={onClose} />
+                            <NewChargeModal
+                                onClose={onClose}
+                                data={mockClients}
+                            />
                         </ModalBody>
                     </ModalContent>
                 </Modal>
@@ -60,7 +83,7 @@ export default function ProviderHome() {
                             h="2.25rem"
                             border="solid 1px #D6D9DE"
                             borderRadius="0.5rem"
-                            placeholder="Pesquisar"
+                            placeholder="Pesquisar por nome"
                             background="white"
                             _active={{
                                 border: 'solid 1px #D6D9DE',
@@ -68,6 +91,8 @@ export default function ProviderHome() {
                             _focus={{
                                 border: 'solid 1px #D6D9DE',
                             }}
+                            value={filteredData}
+                            onChange={(e) => setFilteredData(e.target.value)}
                         />
                     </Flex>
                     <Button
@@ -94,14 +119,29 @@ export default function ProviderHome() {
                     flexWrap="wrap"
                     gap="1rem"
                 >
-                    {
-                        Array(21).fill("").map((e: any, index: any) => (
-                            <ClientCard
-                                key={e + index}
-                                onCardClick={() => navigate(`/provider/client/${index}`)}
-                            />
-                        ))
-                    }
+                    {filteredData === "" ? mockClients.map((e: ClientCardData, index: any) => (
+                        <ClientCard
+                            key={index}
+                            onCardClick={() => navigate(`/provider/client/${e.id}`)}
+                            name={e.name}
+                            lastPayment={e.lastPayment}
+                            nextPayment={e.nextPayment}
+                            price={e.price}
+                            recurrence={e.recurrence}
+                            plan={e.plan}
+                        />
+                    )) : mockClients.filter((e: ClientCardData) => e.name.toLowerCase().includes(filteredData.toLowerCase())).map((e: ClientCardData, index: any) => (
+                        <ClientCard
+                            key={index}
+                            onCardClick={() => navigate(`/provider/client/${e.id}`)}
+                            name={e.name}
+                            lastPayment={e.lastPayment}
+                            nextPayment={e.nextPayment}
+                            price={e.price}
+                            recurrence={e.recurrence}
+                            plan={e.plan}
+                        />
+                    ))}
                 </Flex>
             </Flex>
         </Provider>

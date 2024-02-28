@@ -15,6 +15,7 @@ import { useState } from "react";
 import Input from "../base/Input";
 import Autocomplete from "../base/Autocomplete";
 import Select from "../base/Select";
+import ClientCardData from "../../pages/Provider/ProviderClients";
 
 interface NewChargeModalData {
     name: string,
@@ -39,12 +40,29 @@ interface NewChargeModalData {
         taxes: string,
         fines: string,
     }
+};
+
+interface ClientCardData {
+    id: number,
+    name: string,
+    email: string,
+    age: number,
+    celphone: string,
+    address: string,
+    lastPayment: string,
+    nextPayment: string,
+    price: number,
+    recurrence: string,
+    plan: string,
+    status: string
 }
 
 export default function NewChargeModal({
     onClose,
+    data,
 } : {
     onClose: Function
+    data: ClientCardData[]
 }) {
 
     const [formData, setFormData] = useState<NewChargeModalData>({
@@ -72,19 +90,7 @@ export default function NewChargeModal({
         }
     })
 
-    const names = [
-        "Felipe",
-        "João",
-        "Leonardo",
-        "Sophia",
-        "Thiago",
-        "Athos",
-        "Lucca",
-        "Jordhan",
-        "José",
-        "Giovanni",
-        "Matheus",
-    ]
+    const names = data.map((client) => client.name)
 
     const plans = [
         "Plano 1",
