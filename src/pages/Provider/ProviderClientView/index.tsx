@@ -31,6 +31,67 @@ export default function ProviderClientView() {
             .replace(/(-\d{4})\d+?$/, '$1')
     }
 
+    function switchRepeat(value: string | undefined) {
+        switch(value) {
+            case 'monthly':
+                return 'Mensal'
+            case 'quarterly':
+                return 'Trimestral'
+            case 'semiannual':
+                return 'Semestral'
+            case 'annual':
+                return 'Anual'
+            default:
+                return 'Não definido'
+        }
+    }
+
+    function switchStatus(value: string | undefined) {
+        switch(value) {
+            case 'late':
+                return (
+                    <Text
+                        textAlign="center"
+                        color="#C70000"
+                        bgColor="#FFBFBF"
+                        borderRadius="0.4375rem"
+                        py="0.5rem"
+                        fontWeight="700"
+                    >
+                        Atrasado
+                    </Text>
+                )
+            case 'open':
+                return (
+                    <Text
+                        textAlign="center"
+                        color="#0009E0"
+                        bgColor="#A8D7E5"
+                        borderRadius="0.4375rem"
+                        py="0.5rem"
+                        fontWeight="700"
+                    >
+                        Em aberto
+                    </Text>
+                )
+            case 'payed':
+                return (
+                    <Text
+                        textAlign="center"
+                        color="#427642"
+                        bgColor="#E0F0D7"
+                        borderRadius="0.4375rem"
+                        py="0.5rem"
+                        fontWeight="700"
+                    >
+                        Pago
+                    </Text>
+                )
+            default:
+                return 'Não definido'
+        }
+    }
+
     return (
         <Provider>
             <Flex
@@ -190,7 +251,7 @@ export default function ProviderClientView() {
                                 <CardSingleData
                                     icon={<FiRefreshCw  />}
                                     title="Recorrência"
-                                    info={userData?.recurrence}
+                                    info={switchRepeat(userData?.recurrence)}
                                     width="50%"
                                 />
                                 <CardSingleData
@@ -238,7 +299,7 @@ export default function ProviderClientView() {
                                         <Td>{item.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</Td>
                                         <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.payDay ?? ''))}</Td>
                                         <Td><Button /><Button /><Button /></Td>
-                                        <Td>{item.status}</Td>
+                                        <Td>{switchStatus(item.status)}</Td>
                                     </Tr>
                                 ))}
                             </Tbody>

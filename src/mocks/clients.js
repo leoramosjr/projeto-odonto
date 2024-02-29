@@ -26,14 +26,14 @@ export const mockClients = [
                 dueDate: "2020-12-01",
                 price: 100,
                 payDay: "2020-12-02",
-                status: "payed"
+                status: "late"
             },
             {
                 emissionDate: "2020-11-01",
                 dueDate: "2020-11-01",
                 price: 100,
                 payDay: "2020-11-02",
-                status: "payed"
+                status: "open"
             }
 
         ]

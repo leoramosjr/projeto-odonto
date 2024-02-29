@@ -23,6 +23,7 @@ export default function ClientCard({
     recurrence: string,
     plan: string,
 }) {
+    
     return (
         <Flex
             w="100%"
