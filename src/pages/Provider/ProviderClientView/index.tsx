@@ -9,17 +9,28 @@ import {
     Td,
     Thead,
     Tr,
+    Tooltip,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalHeader,
+    ModalOverlay,
+    useDisclosure,
 } from '@chakra-ui/react';
 import { FiPlus, FiMail, FiCalendar, FiPhone, FiMapPin, FiLogOut, FiDollarSign, FiClipboard, FiLogIn, FiRefreshCw, FiLayout } from 'react-icons/fi';
 import CardSingleData from '../../../components/CardSingleData';
 import Provider from '..';
 import { mockClients } from '../../../mocks/clients.js';
 import { useParams } from 'react-router-dom';
+import { FiRotateCw, FiFileMinus, FiSlash } from "react-icons/fi";
+import NewChargeModal from '../../../components/NewChargeModal/index.js';
 
 export default function ProviderClientView() {
 
     const userId = useParams()
     const userData = mockClients.find((item) => item.id.toString() === userId.id)
+    const { isOpen, onOpen, onClose } = useDisclosure()
     
     document.title = `${userData?.name} | Creatus Pay`
 
@@ -94,6 +105,21 @@ export default function ProviderClientView() {
 
     return (
         <Provider>
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        {userData && (
+                            <NewChargeModal
+                                onClose={onClose}
+                                data={[userData]}
+                            />
+                        )}
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
             <Flex
                 w="100%"
                 direction="column"
@@ -127,6 +153,7 @@ export default function ProviderClientView() {
                         _hover={{
                             bg: '#1E40AF',
                         }}
+                        onClick={onOpen}
                     >
                         Nova Cobrança
                     </Button>
@@ -255,9 +282,9 @@ export default function ProviderClientView() {
                                     width="50%"
                                 />
                                 <CardSingleData
-                                    icon={<FiLayout  />}
+                                    icon={<FiLayout />}
                                     title="Status"
-                                    info={userData?.status}
+                                    info={userData?.status === 'late' ? 'Atrasado' : userData?.status === 'open' ? 'Em Aberto' : 'Pago'}
                                     width="50%"
                                 />
                             </Flex>
@@ -283,12 +310,12 @@ export default function ProviderClientView() {
                         <Table>
                             <Thead>
                                 <Tr>
-                                    <Td>Data da Emissão</Td>
-                                    <Td>Data de Vencimento</Td>
-                                    <Td>Valor da Cobrança</Td>
-                                    <Td>Data do Pagamento</Td>
-                                    <Td>Ação</Td>
-                                    <Td>Status</Td>
+                                    <Td fontWeight="bold">Data da Emissão</Td>
+                                    <Td fontWeight="bold">Data de Vencimento</Td>
+                                    <Td fontWeight="bold">Valor da Cobrança</Td>
+                                    <Td fontWeight="bold">Data do Pagamento</Td>
+                                    <Td fontWeight="bold">Ação</Td>
+                                    <Td fontWeight="bold">Status</Td>
                                 </Tr>
                             </Thead>
                             <Tbody>
@@ -297,8 +324,29 @@ export default function ProviderClientView() {
                                         <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.emissionDate ?? ''))}</Td>
                                         <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.dueDate ?? ''))}</Td>
                                         <Td>{item.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</Td>
-                                        <Td>{new Intl.DateTimeFormat('pt-BR').format(new Date(item.payDay ?? ''))}</Td>
-                                        <Td><Button /><Button /><Button /></Td>
+                                        <Td
+                                            color={item.status === "late" ? "#C70000" : "-moz-initial"}
+                                            fontWeight={item.status === "late" ? "bold" : "-moz-initial"}
+                                        >
+                                            {item.status === "late" ? "Não realizado" : new Intl.DateTimeFormat('pt-BR').format(new Date(item.payDay ?? ''))}
+                                        </Td>
+                                        <Td>
+                                            <Tooltip label="Reenviar Cobrança" aria-label="A tooltip">
+                                                <Button bg="transparent" borderRadius="500px" w="48px" h="48px">
+                                                    <FiRotateCw />
+                                                </Button>
+                                            </Tooltip>
+                                            <Tooltip label="Ressarcir Cobrança" aria-label="A tooltip">
+                                                <Button bg="transparent" borderRadius="500px" w="48px" h="48px">
+                                                    <FiFileMinus />
+                                                </Button>
+                                            </Tooltip>
+                                            <Tooltip label="Cancelar Cobrança" aria-label="A tooltip">
+                                                <Button bg="transparent" borderRadius="500px" w="48px" h="48px">
+                                                    <FiSlash />
+                                                </Button>
+                                            </Tooltip>
+                                        </Td>
                                         <Td>{switchStatus(item.status)}</Td>
                                     </Tr>
                                 ))}

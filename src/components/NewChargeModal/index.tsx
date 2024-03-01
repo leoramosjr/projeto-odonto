@@ -11,7 +11,7 @@ import {
     InputRightAddon,
     Tooltip,
 } from "@chakra-ui/react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../base/Input";
 import Autocomplete from "../base/Autocomplete";
 import Select from "../base/Select";
@@ -65,14 +65,15 @@ export default function NewChargeModal({
     data: ClientCardData[]
 }) {
 
+    const [hasTaxesAndFines, setHasTaxesAndFines] = useState(false)
     const [formData, setFormData] = useState<NewChargeModalData>({
         name: "",
         whats: {
-            checked: false,
+            checked: data[0].celphone ? true : false,
             value: "",
         },
         email: {
-            checked: false,
+            checked: data[0].email ? true : false,
             value: "",
         },
         link: {
@@ -100,7 +101,28 @@ export default function NewChargeModal({
         "Plano 5",
     ]
 
-    const [hasTaxesAndFines, setHasTaxesAndFines] = useState(false)
+    console.log('Data: ', data)
+
+    useEffect(() => {
+        data && setFormData({
+            ...formData,
+            name: data[0].name
+        })
+        data[0].email && setFormData({
+            ...formData,
+            email: {
+                checked: formData.email.checked,
+                value: data[0].email
+            }
+        })
+        data[0].celphone && setFormData({
+            ...formData,
+            whats: {
+                checked: formData.whats.checked,
+                value: data[0].celphone
+            }
+        })
+    }, [])
 
     return (
         <form
@@ -148,9 +170,22 @@ export default function NewChargeModal({
                             })
                         }}
                     >
-                        <Checkbox value={"whats"}>WhatsApp</Checkbox>
-                        <Checkbox value={"email"}>Email</Checkbox>
-                        <Checkbox value={"link"}>Link</Checkbox>
+                        <Checkbox
+                            isChecked={true}
+                            value={"whats"}
+                        >
+                            WhatsApp
+                        </Checkbox>
+                        <Checkbox
+                            value={"email"}
+                        >
+                            Email
+                        </Checkbox>
+                        <Checkbox
+                            value={"link"}
+                        >
+                            Link
+                        </Checkbox>
                     </CheckboxGroup>
                 </Stack>
             </Flex>

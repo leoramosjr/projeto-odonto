@@ -24,6 +24,21 @@ export default function ClientCard({
     plan: string,
 }) {
     
+    function switchRepeat(value: string | undefined) {
+        switch(value) {
+            case 'monthly':
+                return 'Mensal'
+            case 'quarterly':
+                return 'Trimestral'
+            case 'semiannual':
+                return 'Semestral'
+            case 'annual':
+                return 'Anual'
+            default:
+                return 'Não definido'
+        }
+    }
+    
     return (
         <Flex
             w="100%"
@@ -61,7 +76,7 @@ export default function ClientCard({
                     lineHeight="1.6rem"
                     textAlign="center"
                 >
-                    {name[0]}
+                    {name[0] + name.split(" ")[1][0]}
                 </Text>
             </Flex>
             <Text
@@ -98,7 +113,7 @@ export default function ClientCard({
                     boxShadow="0px 4px 4px 0px rgba(53, 53, 53, 0.12)"
                     textAlign="center"
                 >
-                    <Text color="#8F8EA6" fontSize="0.75rem">{recurrence}</Text>
+                    <Text color="#8F8EA6" fontSize="0.75rem">{switchRepeat(recurrence)}</Text>
                     <Flex
                         align="center"
                         gap="0.25rem"

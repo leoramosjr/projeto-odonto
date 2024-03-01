@@ -11,7 +11,7 @@ export const mockClients = [
         nextPayment: "2021-02-01",
         price: 100,
         recurrence: "monthly",
-        plan: "basic",
+        plan: "Básico",
         status: "payed",
         history: [
             {
@@ -49,7 +49,7 @@ export const mockClients = [
         nextPayment: "2021-02-01",
         price: 400,
         recurrence: "semiannual",
-        plan: "medium",
+        plan: "Médio",
         status: "open",
         history: [
             {
@@ -87,7 +87,7 @@ export const mockClients = [
         nextPayment: "2021-02-01",
         price: 500,
         recurrence: "annual",
-        plan: "advanced",
+        plan: "Avançado",
         status: "late",
         history: [
             {
@@ -125,7 +125,7 @@ export const mockClients = [
         nextPayment: "2021-02-01",
         price: 200,
         recurrence: "monthly",
-        plan: "basic",
+        plan: "Básico",
         status: "open",
         history: [
             {
@@ -163,7 +163,7 @@ export const mockClients = [
         nextPayment: "2021-02-01",
         price: 100,
         recurrence: "monthly",
-        plan: "basic",
+        plan: "Básico",
         status: "payed",
         history: [
             {

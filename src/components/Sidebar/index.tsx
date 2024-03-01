@@ -4,7 +4,13 @@ import {
     Tooltip,
 } from '@chakra-ui/react'
 import ProjetinhoLogo from '../../assets/images/ProjetinhoLogo.svg';
-import { FiHome, FiFile, FiPieChart, FiHelpCircle, FiLogOut } from "react-icons/fi";
+import {
+    FiHome,
+    FiFile,
+    // FiPieChart,
+    FiHelpCircle,
+        FiLogOut
+} from "react-icons/fi";
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Sidebar() {
@@ -20,11 +26,11 @@ export default function Sidebar() {
             label: "Planos",
             route: "/provider/plans"
         },
-        {
-            icon: <FiPieChart />,
-            label: "Dashboard",
-            route: "/provider/dashboard"
-        },
+        // {
+        //     icon: <FiPieChart />,
+        //     label: "Dashboard",
+        //     route: "/provider/dashboard"
+        // },
     ]
 
     const navigate = useNavigate();
