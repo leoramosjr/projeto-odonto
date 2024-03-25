@@ -2,18 +2,18 @@ import {
     Flex,
     Text,
 } from '@chakra-ui/react'
-import WorkingPotato from '../../../assets/images/workingPotato.png'
+import WorkingPotato from '../../assets/images/workingPotato.png'
 import Provider from '../index'
 
-export default function ProviderPlans() {
-    
-    document.title = `Planos | Creatus Pay`
+export default function Tasks() {
+
+    document.title = `Tarefas | • NR •`
 
     return (
         <Provider>
             <Flex
                 w="100%"
-                minH="100%"
+                h="100%"
                 direction="column"
                 align="center"
                 justify="center"
@@ -26,7 +26,7 @@ export default function ProviderPlans() {
                     textAlign="center"
                     fontFamily="Circo"
                 >
-                    Plans page is under construction
+                    Tasks page is under construction
                 </Text>
                 <Text
                     fontSize="1rem"

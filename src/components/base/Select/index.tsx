@@ -11,7 +11,7 @@ interface InputProps {
     label?: string,
     placeholder?: string,
     value?: string,
-    onChange: Function,
+    onChange?: Function,
     optionsList: string[],
     props?: any,
 }
@@ -37,7 +37,7 @@ export default function Select({
         >
             <Text
                 fontSize="0.75rem"
-                color={isFocused ? "#3182ce" : "#828282"}
+                color={isFocused ? "#066964" : "#828282"}
                 bgColor="white"
                 ml="0.5rem"
                 transform="translateY(8px)"
@@ -56,11 +56,12 @@ export default function Select({
                 h="2.5rem"
                 borderRadius="0.25rem"
                 _placeholder={{
-                    color: isFocused ? "#3182ce" : "#828282",
+                    color: isFocused ? "#066964" : "#828282",
                 }}
+                focusBorderColor='#066964'
                 onFocus={() => {setIsFocused(true)}}
                 onBlur={() => {setIsFocused(false)}}
-                onChange={(event) => onChange(event.target.value)}
+                onChange={(event) => onChange && onChange(event.target.value)}
                 {...props}
             >
                 {optionsList.map((option, index) => (

@@ -19,20 +19,20 @@ import {
     useDisclosure,
 } from '@chakra-ui/react';
 import { FiPlus, FiMail, FiCalendar, FiPhone, FiMapPin, FiLogOut, FiDollarSign, FiClipboard, FiLogIn, FiRefreshCw, FiLayout } from 'react-icons/fi';
-import CardSingleData from '../../../components/CardSingleData';
-import Provider from '..';
-import { mockClients } from '../../../mocks/clients.js';
+import CardSingleData from '../../components/CardSingleData/index.js';
+import Provider from '../index.js';
+import { mockClients } from '../../mocks/clients.js';
 import { useParams } from 'react-router-dom';
 import { FiRotateCw, FiFileMinus, FiSlash } from "react-icons/fi";
-import NewChargeModal from '../../../components/NewChargeModal/index.js';
+import NewClient from '../../components/NewClient/index.js';
 
-export default function ProviderClientView() {
+export default function ClientView() {
 
     const userId = useParams()
     const userData = mockClients.find((item) => item.id.toString() === userId.id)
     const { isOpen, onOpen, onClose } = useDisclosure()
     
-    document.title = `${userData?.name} | Creatus Pay`
+    document.title = `${userData?.name} | • NR •`
 
     function cellphoneMask(value: string | undefined) {
         if (value) return value
@@ -111,12 +111,7 @@ export default function ProviderClientView() {
                     <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        {userData && (
-                            <NewChargeModal
-                                onClose={onClose}
-                                data={[userData]}
-                            />
-                        )}
+                        {userData && <NewClient onClose={onClose} />}
                     </ModalBody>
                 </ModalContent>
             </Modal>
@@ -143,7 +138,7 @@ export default function ProviderClientView() {
                     </Flex>
                     <Button
                         leftIcon={<FiPlus />}
-                        bg="#3B82F6"
+                        bg="#43A29D"
                         color="white"
                         fontWeight="bold"
                         fontSize="0.875rem"
@@ -151,7 +146,7 @@ export default function ProviderClientView() {
                         transition="all 0.1s ease-in-out"
                         px="1.5rem"
                         _hover={{
-                            bg: '#1E40AF',
+                            bg: '#52c8c2',
                         }}
                         onClick={onOpen}
                     >
@@ -369,7 +364,7 @@ export default function ProviderClientView() {
                         transition="all 0.1s ease-in-out"
                         px="1.5rem"
                         _hover={{
-                            bg: '#1E40AF',
+                            bg: '#52c8c2',
                         }}
                         >
                             Encerrar Assinatura

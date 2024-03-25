@@ -4,29 +4,25 @@ import {
     Route,
     Navigate,
 } from 'react-router-dom';
-import LoginPage from '../pages/Login';
-import Client from '../pages/Client';
 import TestPage from '../pages/Test';
-import ProviderHome from '../pages/Provider/ProviderClients';
-import ProviderClientView from '../pages/Provider/ProviderClientView';
-import ProviderPlans from '../pages/Provider/ProviderPlans';
-import ProviderDashboard from '../pages/Provider/ProviderDashboard';
+import ClientList from '../pages/ClientList';
+import ClientView from '../pages/ClientView';
+import Callendar from '../pages/Callendar';
+import Tasks from '../pages/Tasks';
 
 export default function AppRoutes() {
   return (
     <Router>
         <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="provider">
-                <Route path="home" element={<ProviderHome />} index />
-                <Route path="client/:id" element={<ProviderClientView />} />
-                <Route path="plans" element={<ProviderPlans />} />
-                <Route path="dashboard" element={<ProviderDashboard />} />
-                <Route path="*" element={<Navigate to="home" />} />
+            <Route path="calendar" element={<Callendar />} />
+            <Route path="clients">
+                <Route path="" element={<ClientList />} index />
+                <Route path=":id" element={<ClientView />} />
+                <Route path="*" element={<Navigate to="clients" />} />
             </Route>
-            <Route path="client" element={<Client />} />
+            <Route path="tasks" element={<Tasks />} />
             <Route path="test" element={<TestPage />} />
-            <Route path="*" element={<Navigate to="/" />}/>
+            <Route path="*" element={<Navigate to="/calendar" />}/>
         </Routes>
     </Router>
   );

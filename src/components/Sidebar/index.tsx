@@ -3,13 +3,12 @@ import {
     Button,
     Tooltip,
 } from '@chakra-ui/react'
-import ProjetinhoLogo from '../../assets/images/ProjetinhoLogo.svg';
 import {
-    FiHome,
-    FiFile,
-    // FiPieChart,
     FiHelpCircle,
-        FiLogOut
+    FiLogOut,
+    FiCheckSquare,
+    FiUsers,
+    FiCalendar
 } from "react-icons/fi";
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -17,20 +16,20 @@ export default function Sidebar() {
 
     const navButtons = [
         {
-            icon: <FiHome />,
-            label: "Home",
-            route: "/provider/home"
+            icon: <FiCalendar />,
+            label: "Calendário",
+            route: "/calendar"
         },
         {
-            icon: <FiFile />,
-            label: "Planos",
-            route: "/provider/plans"
+            icon: <FiUsers />,
+            label: "Pacientes",
+            route: "/clients"
         },
-        // {
-        //     icon: <FiPieChart />,
-        //     label: "Dashboard",
-        //     route: "/provider/dashboard"
-        // },
+        {
+            icon: <FiCheckSquare />,
+            label: "Tarefas",
+            route: "/tasks"
+        },
     ]
 
     const navigate = useNavigate();
@@ -54,9 +53,10 @@ export default function Sidebar() {
             <Flex
                 direction="column"
                 align="center"
-                gap="3.5rem"
+                gap="1rem"
+                color="#054945"
             >
-                <img src={ProjetinhoLogo} alt="Projetinho Logo" draggable="false" />
+                • NR •
                 <Flex
                     direction="column"
                     gap="0.81rem"
@@ -79,7 +79,7 @@ export default function Sidebar() {
                         >
                             <Button
                                 key={index}
-                                bgColor={section === index ? "#0075EB" : "transparent"}
+                                bgColor={section === index ? "#43A29D" : "transparent"}
                                 color={section === index ? "white" : "#333333"}
                                 h="40px"
                                 w="32px
@@ -124,7 +124,7 @@ export default function Sidebar() {
                         borderRadius="50%"
                         title="Ajuda"
                         onClick={() => {
-                            window.open('https://wa.me/5551999303433', '_blank')
+                            window.open('https://wa.me/5551993043856', '_blank')
                         }}
                     >
                         <FiHelpCircle />
@@ -142,7 +142,7 @@ export default function Sidebar() {
                     closeOnClick={false}
                 >
                     <Button
-                        bgColor="#3B82F6"
+                        bgColor="#43A29D"
                         color="white"
                         h="40px"
                         w="32px
@@ -150,7 +150,7 @@ export default function Sidebar() {
                         p="0"
                         borderRadius="10px"
                         _hover={{
-                            background: "#2859a9",
+                            background: "#066964",
                         }}
                         onClick={() => {
                             window.open('/', '_self')

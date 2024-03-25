@@ -2,18 +2,18 @@ import {
     Flex,
     Text,
 } from '@chakra-ui/react'
-import WorkingPotato from '../../../assets/images/workingPotato.png'
+import WorkingPotato from '../../assets/images/workingPotato.png'
 import Provider from '../index'
 
-export default function ProviderDashboard() {
-
-    document.title = `Dashboard | Creatus Pay`
+export default function Callendar() {
+    
+    document.title = `Calendários | • NR •`
 
     return (
         <Provider>
             <Flex
                 w="100%"
-                h="100%"
+                minH="100%"
                 direction="column"
                 align="center"
                 justify="center"
@@ -26,7 +26,7 @@ export default function ProviderDashboard() {
                     textAlign="center"
                     fontFamily="Circo"
                 >
-                    Dashboard page is under construction
+                    Callendar page is under construction
                 </Text>
                 <Text
                     fontSize="1rem"

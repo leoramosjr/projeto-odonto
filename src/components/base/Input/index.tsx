@@ -13,7 +13,7 @@ interface InputProps {
     type?: string,
     placeholder?: string,
     value?: string,
-    onChange: Function,
+    onChange?: Function,
     leftChildren?: React.ReactNode,
     rightChildren?: React.ReactNode,
     props?: any,
@@ -42,7 +42,7 @@ export default function Input({
         >
             <Text
                 fontSize="0.75rem"
-                color={isFocused ? "#3182ce" : "#828282"}
+                color={isFocused ? "#066964" : "#828282"}
                 bgColor="white"
                 ml="0.5rem"
                 transform="translateY(8px)"
@@ -60,13 +60,14 @@ export default function Input({
                     type={type}
                     placeholder={placeholder}
                     value={value}
-                    onChange={(event) => onChange(event.target.value)}
+                    onChange={(event) => onChange && onChange(event.target.value)}
                     w="100%"
                     h="2.5rem"
                     borderRadius="0.25rem"
                     _placeholder={{
-                        color: isFocused ? "#3182ce" : "#828282",
+                        color: isFocused ? "#066964" : "#828282",
                     }}
+                    focusBorderColor='#066964'
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                     {...props}

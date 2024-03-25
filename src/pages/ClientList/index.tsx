@@ -12,12 +12,12 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from "react-icons/fi";
-import ClientCard from '../../../components/ClientCard/index.js'
-import NewChargeModal from '../../../components/NewChargeModal/index.js';
+import ClientCard from '../../components/ClientCard/index.js'
+import NewClient from '../../components/NewClient/index.js';
 import { useNavigate } from 'react-router-dom';
 import Provider from '../index';
 import { useState } from 'react';
-import { mockClients } from '../../../mocks/clients.js';
+import { mockClients } from '../../mocks/clients.js';
 
 interface ClientCardData {
     id: number,
@@ -34,13 +34,13 @@ interface ClientCardData {
     status: string
 }
 
-export default function ProviderClients() {
+export default function ClientList() {
 
     const [filteredData, setFilteredData] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate();
     
-    document.title = 'Clientes | Creatus Pay';
+    document.title = 'Pacientes | • NR •';
     
     return (
         <Provider>
@@ -53,13 +53,10 @@ export default function ProviderClients() {
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                        <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Cobrança</ModalHeader>
+                        <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Novo Paciente</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            <NewChargeModal
-                                onClose={onClose}
-                                data={mockClients}
-                            />
+                            <NewClient onClose={onClose} />
                         </ModalBody>
                     </ModalContent>
                 </Modal>
@@ -75,7 +72,7 @@ export default function ProviderClients() {
                             fontWeight="500"
                             fontFamily="Dm Sans"
                         >
-                            Clientes
+                            Pacientes
                         </Text>
                         <Input
                             w="100%"
@@ -97,7 +94,7 @@ export default function ProviderClients() {
                     </Flex>
                     <Button
                         leftIcon={<FiPlus />}
-                        bg="#3B82F6"
+                        bg="#43A29D"
                         color="white"
                         fontWeight="bold"
                         fontSize="0.875rem"
@@ -105,11 +102,11 @@ export default function ProviderClients() {
                         transition="all 0.1s ease-in-out"
                         px="1.5rem"
                         _hover={{
-                            bg: '#1E40AF',
+                            bg: '#52c8c2',
                         }}
                         onClick={onOpen}
                     >
-                        Nova Cobrança
+                        Novo Paciente
                     </Button>
                 </Flex>
                 <Flex
@@ -122,7 +119,7 @@ export default function ProviderClients() {
                     {filteredData === "" ? mockClients.map((e: ClientCardData, index: any) => (
                         <ClientCard
                             key={index}
-                            onCardClick={() => navigate(`/provider/client/${e.id}`)}
+                            onCardClick={() => navigate(`/clients/${e.id}`)}
                             name={e.name}
                             lastPayment={e.lastPayment}
                             nextPayment={e.nextPayment}
@@ -133,7 +130,7 @@ export default function ProviderClients() {
                     )) : mockClients.filter((e: ClientCardData) => e.name.toLowerCase().includes(filteredData.toLowerCase())).map((e: ClientCardData, index: any) => (
                         <ClientCard
                             key={index}
-                            onCardClick={() => navigate(`/provider/client/${e.id}`)}
+                            onCardClick={() => navigate(`/clients/${e.id}`)}
                             name={e.name}
                             lastPayment={e.lastPayment}
                             nextPayment={e.nextPayment}
