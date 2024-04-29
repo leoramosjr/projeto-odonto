@@ -3,12 +3,14 @@ import {
     Text,
 } from '@chakra-ui/react'
 import Sidebar from '../components/Sidebar'
+import { useParams } from 'react-router-dom'
 
 export default function Provider({
     children,
 } : {
     children?: React.ReactNode
 }) {
+    const userId = useParams()
 
     return (
         <Flex
@@ -32,6 +34,7 @@ export default function Provider({
                 gap="2rem"
             >
                 <Flex
+                    hidden={!!userId.id}
                     w="100%"
                     align="center"
                 >

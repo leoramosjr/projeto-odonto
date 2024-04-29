@@ -1,9 +1,10 @@
 import {
     Flex,
-    Text,
+    Button,
 } from '@chakra-ui/react'
-import WorkingPotato from '../../assets/images/workingPotato.png'
 import Provider from '../index'
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 export default function Callendar() {
     
@@ -19,31 +20,25 @@ export default function Callendar() {
                 justify="center"
                 gap="1rem"
             >
-                <Text
-                    fontSize="2rem"
-                    fontWeight="bold"
-                    lineHeight="1.73794rem"
-                    textAlign="center"
-                    fontFamily="Circo"
-                >
-                    Callendar page is under construction
-                </Text>
-                <Text
-                    fontSize="1rem"
-                    fontWeight="bold"
-                    lineHeight="1.73794rem"
-                    textAlign="center"
-                    fontFamily="Circo"
-                >
-                    by the Potato Team
-                </Text>
-                <img
-                    src={WorkingPotato}
-                    alt="Working Potato"
-                    style={{
-                        width: '100%',
-                        maxWidth: '20rem'
-                    }}
+                <Flex w="100%" justify="flex-end">
+                    <Button
+                        bg="#43A29D"
+                        color="white"
+                        fontWeight="bold"
+                        fontSize="0.875rem"
+                        lineHeight="1.25rem"
+                        transition="all 0.1s ease-in-out"
+                        px="1.5rem"
+                        _hover={{
+                            bg: '#52c8c2',
+                        }}
+                    >
+                        Novo Evento
+                    </Button>
+                </Flex>
+                <FullCalendar
+                    plugins={[ dayGridPlugin ]}
+                    initialView="dayGridMonth"
                 />
             </Flex>
         </Provider>

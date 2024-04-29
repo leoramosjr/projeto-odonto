@@ -16,6 +16,8 @@ interface InputProps {
     onChange?: Function,
     leftChildren?: React.ReactNode,
     rightChildren?: React.ReactNode,
+    bold?: boolean,
+    isEditing?: boolean,
     props?: any,
 }
 
@@ -29,6 +31,8 @@ export default function Input({
         onChange,
         leftChildren,
         rightChildren,
+        isEditing = true,
+        bold,
         ...props
     } : InputProps) {
 
@@ -50,12 +54,14 @@ export default function Input({
                 w="fit-content"
                 px="0.5rem"
                 borderRadius="0.25rem"
+                fontWeight={bold ? "700" : "500"}
             >
                 {label}
             </Text>
             <InputGroup>
                 {leftChildren}
                 <ChakraInput
+                    disabled={!isEditing}
                     name={name}
                     type={type}
                     placeholder={placeholder}
