@@ -13,4 +13,6 @@ body {
     font-family: 'DM Sans', sans-serif;
     background-color: var(--white) !important;
     color: var(--black);
+    max-width: 100vw;
+    overflow-x: hidden;
 }

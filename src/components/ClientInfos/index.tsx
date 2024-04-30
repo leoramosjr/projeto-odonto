@@ -11,8 +11,10 @@ import Input from '../base/Input';
 
 export default function ClientInfos({
     isEditing,
+    userData,
 } : {
     isEditing: boolean,
+    userData: any,
 }) {
 
     const data = [

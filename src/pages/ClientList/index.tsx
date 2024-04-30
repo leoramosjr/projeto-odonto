@@ -20,18 +20,18 @@ import { useState } from 'react';
 import { mockClients } from '../../mocks/clients.js';
 
 interface ClientCardData {
-    id: number,
+    id: string,
     name: string,
     email: string,
-    age: number,
+    birthDate: string,
     celphone: string,
     address: string,
-    lastPayment: string,
-    nextPayment: string,
-    price: number,
+    firstQuery: string,
+    lastQuery: string,
+    nextQuery: string,
     recurrence: string,
-    plan: string,
-    status: string
+    job: string,
+    origin: string,
 }
 
 export default function ClientList() {
@@ -121,22 +121,22 @@ export default function ClientList() {
                             key={index}
                             onCardClick={() => navigate(`/clients/${e.id}`)}
                             name={e.name}
-                            lastPayment={e.lastPayment}
-                            nextPayment={e.nextPayment}
-                            price={e.price}
+                            lastQuery={e.lastQuery}
+                            nextQuery={e.nextQuery}
                             recurrence={e.recurrence}
-                            plan={e.plan}
+                            email={e.email}
+                            phone={e.celphone}
                         />
                     )) : mockClients.filter((e: ClientCardData) => e.name.toLowerCase().includes(filteredData.toLowerCase())).map((e: ClientCardData, index: any) => (
                         <ClientCard
                             key={index}
                             onCardClick={() => navigate(`/clients/${e.id}`)}
                             name={e.name}
-                            lastPayment={e.lastPayment}
-                            nextPayment={e.nextPayment}
-                            price={e.price}
+                            lastQuery={e.lastQuery}
+                            nextQuery={e.nextQuery}
                             recurrence={e.recurrence}
-                            plan={e.plan}
+                            email={e.email}
+                            phone={e.celphone}
                         />
                     ))}
                 </Flex>

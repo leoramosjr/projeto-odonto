@@ -159,7 +159,7 @@ export default function ClientView() {
                     gap="1.5rem"
                     direction="column"
                 >
-                    <ClientInfos isEditing={isEditing} />
+                    <ClientInfos isEditing={isEditing} userData={userData} />
                     <Text
                         fontSize="1.5rem"
                         fontWeight="700"

@@ -14,15 +14,18 @@ export default function Provider({
 
     return (
         <Flex
-            maxW="100vw"
+            minW="100vw"
             minH="100vh"
+            maxW="100vw"
             bg="#FCFCFC"
             p="2rem 1.5rem 2rem 6.5rem"
             direction="column"
+            overflowX="hidden"
         >
             <Sidebar />
             <Flex
-                w="100%"
+                display={document.title === 'Calendários | • NR •' ? 'block' : 'flex'}
+                minW="100%"
                 minH="calc(100vh - 4rem)"
                 bg="white"
                 borderRadius="0.5rem"

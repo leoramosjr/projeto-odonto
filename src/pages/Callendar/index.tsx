@@ -1,26 +1,75 @@
 import {
     Flex,
     Button,
+    useDisclosure,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalHeader,
+    ModalOverlay,
+    Text,
 } from '@chakra-ui/react'
-import Provider from '../index'
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import interactionPlugin from '@fullcalendar/interaction';
+import { useState } from 'react';
+import EventModal from '../../components/EventModal';
+import Sidebar from '../../components/Sidebar';
 
 export default function Callendar() {
-    
+
     document.title = `Calendários | • NR •`
 
+    const [selectedDate, setSelectedDate] = useState('')
+    const { isOpen, onOpen, onClose} = useDisclosure();
+
     return (
-        <Provider>
+        <Flex
+            minW="100vw"
+            minH="100vh"
+            maxW="100vw"
+            bg="#FCFCFC"
+            p="2rem 1.5rem 2rem 6.5rem"
+            direction="column"
+            overflowX="hidden"
+        >
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Novo Evento</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <EventModal
+                            selectable
+                            date={selectedDate}
+                        />
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+            <Sidebar />
             <Flex
-                w="100%"
-                minH="100%"
-                direction="column"
-                align="center"
-                justify="center"
-                gap="1rem"
+                display={'block'}
+                minW="100%"
+                minH="calc(100vh - 4rem)"
+                bg="white"
+                borderRadius="0.5rem"
+                boxShadow="7px 4px 18.4px 0px rgba(0, 107, 215, 0.15)"
+                p="2rem 1.5rem 4rem 1.5rem"
             >
-                <Flex w="100%" justify="flex-end">
+                <Flex
+                    w="100%"
+                    align="center"
+                    justify="space-between"
+                    mb="2rem"
+                >
+                    <Text
+                        fontSize="1.65rem"
+                        fontWeight="600"
+                        fontFamily="Dm Sans"
+                    >
+                        Dra. Natália Rossoni
+                    </Text>
                     <Button
                         bg="#43A29D"
                         color="white"
@@ -32,15 +81,30 @@ export default function Callendar() {
                         _hover={{
                             bg: '#52c8c2',
                         }}
+                        onClick={() => {
+                            setSelectedDate('')
+                            onOpen()
+                        }}
                     >
-                        Novo Evento
+                        Adicionar Novo Evento
                     </Button>
                 </Flex>
                 <FullCalendar
-                    plugins={[ dayGridPlugin ]}
+                    plugins={[ dayGridPlugin, interactionPlugin ]}
                     initialView="dayGridMonth"
+                    contentHeight={550}
+                    height={900}
+                    headerToolbar={{
+                        left: 'title',
+                        right: 'prev next',
+                    }}
+                    locale={'pt-br'}
+                    dateClick={(info) => {
+                        setSelectedDate(info.dateStr)
+                        onOpen()
+                    }}
                 />
             </Flex>
-        </Provider>
+        </Flex>
     )
 }

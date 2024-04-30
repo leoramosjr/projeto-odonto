@@ -3,9 +3,14 @@ import {
     Textarea,
     Input,
     Button,
+    Text,
 } from '@chakra-ui/react'
+import { useState } from 'react'
 
 export default function PostModal() {
+
+    const [fileName, setFileName] = useState('')
+
     return (
         <Flex
             w="fit-content"
@@ -38,10 +43,26 @@ export default function PostModal() {
                 w="100%"
                 justify="flex-end"
                 gap="1rem"
+                align="center"
             >
+                <Text
+                    align="center"
+                    fontSize="0.875rem"
+                    color="#C6C6C6"
+                >
+                    {fileName}
+                </Text>
                 <Input
-                    type="file"
                     display="none"
+                    id="file"
+                    type="file"
+                    accept='.png, .jpg, .jpeg, .pdf'
+                    onChange={(e) => {
+                        console.log(e.target.files)
+                        if (e.target.files && e.target.files[0]?.name) {
+                            setFileName(e.target.files[0].name)
+                        }
+                    }}
                 />
                 <Button
                     as="label"
@@ -58,7 +79,7 @@ export default function PostModal() {
                         bg: '#52c8c2',
                     }}
                 >
-                    Adicionar Imagem
+                    <label htmlFor="file" style={{cursor: "pointer",}}>Adicionar Imagem</label>
                 </Button>
                 <Button
                     bg="#054945"

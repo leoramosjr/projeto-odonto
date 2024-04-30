@@ -3,6 +3,7 @@ import {
     Text,
     Button,
     Divider,
+    useToast,
 } from '@chakra-ui/react'
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiMail } from "react-icons/fi";
@@ -10,18 +11,23 @@ import { FiMail } from "react-icons/fi";
 export default function ClientCard({
     onCardClick,
     name,
-    lastPayment,
-    nextPayment,
+    lastQuery,
+    nextQuery,
+    recurrence,
+    email,
+    phone,
 } : {
     onCardClick: Function
     name: string,
-    lastPayment: string,
-    nextPayment: string,
-    price: number,
+    lastQuery: string,
+    nextQuery: string,
     recurrence: string,
-    plan: string,
+    email: string,
+    phone: string,
 }) {
-    
+
+    const toast = useToast()
+
     return (
         <Flex
             w="100%"
@@ -76,13 +82,13 @@ export default function ClientCard({
             <Flex textAlign="center" w="100%" direction="column" align="center" fontSize="0.6rem">
                 <Text>Última Consulta</Text>
                 <Text color="#00A868">
-                    {new Intl.DateTimeFormat('pt-BR').format(new Date(nextPayment))}
+                    {new Intl.DateTimeFormat('pt-BR').format(new Date(nextQuery))}
                 </Text>
             </Flex>
             <Flex textAlign="center" w="100%" direction="column" align="center" fontSize="0.6rem">
                 <Text>Próxima Consulta</Text>
                 <Text color="#0075EB">
-                    {new Intl.DateTimeFormat('pt-BR').format(new Date(lastPayment))}
+                    {new Intl.DateTimeFormat('pt-BR').format(new Date(lastQuery))}
                 </Text>
             </Flex>
             <Flex
@@ -108,7 +114,7 @@ export default function ClientCard({
                         letterSpacing="0.00644rem"
                         lineHeight="1rem"
                     >
-                        Mensais
+                        {recurrence.charAt(0).toUpperCase() + recurrence.slice(1)}
                     </Text>
                 </Flex>
             </Flex>
@@ -116,24 +122,41 @@ export default function ClientCard({
                 w="100%"
                 justify="center"
                 align="center"
-                gap="1rem"
             >
                 <Button
-                    w="100%"
+                    minW="fit-content"
                     h="1.625rem"
                     leftIcon={<FiMail size={22} />}
                     fontSize="0.60463rem"
                     bg="transparent"
+                    px="0.5rem"
+                    py="0.75rem"
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        navigator.clipboard.writeText(email)
+                        toast({
+                            title: "Email copiado!",
+                            status: "success",
+                            duration: 2000,
+                            isClosable: true,
+                        })
+                    }}
                 >
                     Copiar Email
                 </Button>
                 <Divider orientation="vertical" h="1.375rem" />
                 <Button
-                    w="100%"
+                    minW="fit-content"
                     h="1.625rem"
                     leftIcon={<FaWhatsapp size={22} />}
                     fontSize="0.60463rem"
                     bg="transparent"
+                    px="0.5rem"
+                    py="0.75rem"
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        window.open(`https://wa.me/${phone}`, "_blank")
+                    }}
                 >
                     WhatsApp
                 </Button>

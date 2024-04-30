@@ -3,8 +3,15 @@ import {
     Button,
 } from '@chakra-ui/react'
 import Input from '../base/Input'
+import Select from '../base/Select'
 
-export default function EventModal() {
+export default function EventModal({
+    selectable = false,
+    date,
+} : {
+    selectable?: boolean
+    date?: string
+}) {
     return (
         <Flex
             w="100%"
@@ -14,11 +21,24 @@ export default function EventModal() {
             px="1.5rem"
             pb="1rem"
         >
+            <Select
+                display={selectable}
+                label="Paciente"
+                placeholder="John Doe"
+                optionsList={[
+                    "John Doe",
+                    "Jane Doe",
+                    "John Smith",
+                    "Jane Smith",
+                ]}
+            />
             <Input
                 label="Data"
                 type="date"
                 placeholder="Data"
                 bold
+                value={date}
+                isEditing={date === ''}
             />
             <Input
                 label="Nome do evento"
