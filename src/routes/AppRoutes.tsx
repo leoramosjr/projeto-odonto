@@ -14,7 +14,7 @@ export default function AppRoutes() {
   return (
     <Router>
         <Routes>
-            <Route path="calendar" element={<Callendar />} />
+            <Route path="" element={<Callendar />} />
             <Route path="clients">
                 <Route path="" element={<ClientList />} index />
                 <Route path=":id" element={<ClientView />} />
@@ -22,7 +22,7 @@ export default function AppRoutes() {
             </Route>
             <Route path="tasks" element={<Tasks />} />
             <Route path="test" element={<TestPage />} />
-            <Route path="*" element={<Navigate to="/calendar" />}/>
+            <Route path="*" element={<Navigate to="" />}/>
         </Routes>
     </Router>
   );

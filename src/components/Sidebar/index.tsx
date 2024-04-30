@@ -18,7 +18,7 @@ export default function Sidebar() {
         {
             icon: <FiCalendar />,
             label: "Calendário",
-            route: "/calendar"
+            route: "/"
         },
         {
             icon: <FiUsers />,
