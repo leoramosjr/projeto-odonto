@@ -28,6 +28,8 @@ export default function ClientInfos({
         ["Consulta", '30/09/2023'],
         ["Limpeza", '01/10/2023'],
     ]
+    
+    console.log(userData)
 
     return (
         <Flex w="100%" gap="2rem">
