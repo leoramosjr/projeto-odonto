@@ -8,6 +8,7 @@ import {
     Tr,
 } from '@chakra-ui/react';
 import Input from '../base/Input';
+import Select from '../base/Select';
 import { useState } from 'react';
 
 interface IHistory {
@@ -124,11 +125,10 @@ export default function ClientInfos({
                             });
                         }}
                     />
-                    <Input
+                    <Select
                         isEditing={isEditing}
                         bold
                         label="Origem"
-                        placeholder="Outros (casado com a Dra.)"
                         value={data.origin}
                         onChange={(e: any) => {
                             setData({
@@ -136,6 +136,12 @@ export default function ClientInfos({
                                 origin: e.target.value,
                             });
                         }}
+                        optionsList={[
+                            "Recomendação",
+                            "Instagram",
+                            "Google",
+                            "Outros",
+                        ]}
                     />
                 </Flex>
                 <Flex w="100%" gap="2rem">
@@ -152,11 +158,10 @@ export default function ClientInfos({
                             });
                         }}
                     />
-                    <Input
+                    <Select
                         isEditing={isEditing}
                         bold
                         label="Recorrência"
-                        placeholder="Mensal"
                         value={data.recurrence}
                         onChange={(e: any) => {
                             setData({
@@ -164,6 +169,13 @@ export default function ClientInfos({
                                 recurrence: e.target.value,
                             });
                         }}
+                        optionsList={[
+                            "Mensal",
+                            "Bimestral",
+                            "Trimestral",
+                            "Semestral",
+                            "Anual",
+                        ]}
                     />
                 </Flex>
             </Flex>

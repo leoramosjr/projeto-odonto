@@ -4,6 +4,7 @@ import {
 } from '@chakra-ui/react'
 import Input from '../base/Input'
 import Select from '../base/Select'
+import { mockClients } from '../../mocks/clients'
 
 export default function EventModal({
     selectable = false,
@@ -24,13 +25,7 @@ export default function EventModal({
             <Select
                 display={selectable}
                 label="Paciente"
-                placeholder="John Doe"
-                optionsList={[
-                    "John Doe",
-                    "Jane Doe",
-                    "John Smith",
-                    "Jane Smith",
-                ]}
+                optionsList={mockClients.map(client => client.name)}
             />
             <Input
                 label="Data"
