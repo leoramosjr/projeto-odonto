@@ -20,11 +20,11 @@ import { useState } from 'react';
 import { mockClients } from '../../mocks/clients.js';
 
 interface ClientCardData {
-    id: string,
+    id: number,
     name: string,
     email: string,
     birthDate: string,
-    celphone: string,
+    phone: string,
     address: string,
     firstQuery: string,
     lastQuery: string,
@@ -125,7 +125,7 @@ export default function ClientList() {
                             nextQuery={e.nextQuery}
                             recurrence={e.recurrence}
                             email={e.email}
-                            phone={e.celphone}
+                            phone={e.phone}
                         />
                     )) : mockClients.filter((e: ClientCardData) => e.name.toLowerCase().includes(filteredData.toLowerCase())).map((e: ClientCardData, index: any) => (
                         <ClientCard
@@ -136,7 +136,7 @@ export default function ClientList() {
                             nextQuery={e.nextQuery}
                             recurrence={e.recurrence}
                             email={e.email}
-                            phone={e.celphone}
+                            phone={e.phone}
                         />
                     ))}
                 </Flex>

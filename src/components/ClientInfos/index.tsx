@@ -22,11 +22,11 @@ interface IUserData {
     id: number,
     email: string,
     phone: string,
-    birthdate: string,
+    birthDate: string,
     cpf: string,
-    occupation: string,
+    job: string,
     origin: string,
-    firstConsult: string,
+    firstQuery: string,
     recurrence: string,
     history?: IHistory[],
 }
@@ -60,11 +60,11 @@ export default function ClientInfos({
                         bold
                         label="Data de Nascimento"
                         placeholder="04/10/1998"
-                        value={data.birthdate}
+                        value={Intl.DateTimeFormat('pt-BR').format(new Date(data.birthDate))}
                         onChange={(e: any) => {
                             setData({
                                 ...data,
-                                birthdate: e.target.value,
+                                birthDate: Intl.DateTimeFormat('en-US').format(new Date(e.target.value)),
                             });
                         }}
                     />
@@ -116,11 +116,11 @@ export default function ClientInfos({
                         bold
                         label="Ocupação"
                         placeholder="Engenheiro de beleza"
-                        value={data.occupation}
+                        value={data.job}
                         onChange={(e: any) => {
                             setData({
                                 ...data,
-                                occupation: e.target.value,
+                                job: e.target.value,
                             });
                         }}
                     />
@@ -144,11 +144,11 @@ export default function ClientInfos({
                         bold
                         label="Primeira Consulta"
                         placeholder="23/09/2023"
-                        value={data.firstConsult}
+                        value={new Intl.DateTimeFormat('pt-BR').format(new Date(data.firstQuery))}
                         onChange={(e: any) => {
                             setData({
                                 ...data,
-                                firstConsult: e.target.value,
+                                firstQuery: Intl.DateTimeFormat('en-US').format(new Date(e.target.value)),
                             });
                         }}
                     />

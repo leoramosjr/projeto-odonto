@@ -66,7 +66,7 @@ export default function Input({
                     type={type}
                     placeholder={placeholder}
                     value={value}
-                    onChange={(event) => onChange && onChange(event.target.value)}
+                    onChange={onChange as any}
                     w="100%"
                     h="2.5rem"
                     borderRadius="0.25rem"
