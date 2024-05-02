@@ -153,7 +153,7 @@ export default function Sidebar() {
                             background: "#066964",
                         }}
                         onClick={() => {
-                            window.open('https://www.youtube.com/watch?v=e4TnteIrCWY&pp=ygUYeWFzdW8gdnMgeW9uZSBsaWdodHNhYmVy', '_self')
+                            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley', '_self')
                         }}
                     >
                         <FiLogOut />
