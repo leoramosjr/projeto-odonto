@@ -1,7 +1,8 @@
 
 export const mockClients = [
     {
-        id: "88799896001",
+        id: 111111,
+        cpf: "88799896001",
         name: "John Doe",
         email: "johndoe@email.com",
         birthDate: "2002-07-04",
@@ -10,184 +11,196 @@ export const mockClients = [
         firstQuery: "2021-01-01",
         lastQuery: "2021-01-01",
         nextQuery: "2021-02-01",
-        recurrence: "monthly",
-        job: "Developer",
+        recurrence: "Mensal",
+        job: "Desenvolvedor",
         origin: "Google",
         history: [
             {
-                emissionDate: "2021-01-01",
-                dueDate: "2021-01-01",
-                price: 100,
-                payDay: "2021-01-02",
-                status: "payed"
+                title: "Consulta 1",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                    "25/09/2023",
+                ],
             },
             {
-                emissionDate: "2020-12-01",
-                dueDate: "2020-12-01",
-                price: 100,
-                payDay: "2020-12-02",
-                status: "late"
+                title: "Consulta 2",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [],
             },
             {
-                emissionDate: "2020-11-01",
-                dueDate: "2020-11-01",
-                price: 100,
-                payDay: "2020-11-02",
-                status: "open"
-            }
+                title: "Consulta 3",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                ],
+            },
 
         ]
     },
-    // {
-    //     id: 222222,
-    //     name: "Leonardo Ramos",
-    //     email: "leonardoramos@email.com",
-    //     age: 25,
-    //     celphone: "123456789",
-    //     address: "1234 Main St",
-    //     lastPayment: "2021-01-01",
-    //     nextPayment: "2021-02-01",
-    //     price: 400,
-    //     recurrence: "semiannual",
-    //     plan: "Médio",
-    //     status: "open",
-    //     history: [
-    //         {
-    //             emissionDate: "2021-01-01",
-    //             dueDate: "2021-01-01",
-    //             price: 100,
-    //             payDay: "2021-01-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-12-01",
-    //             dueDate: "2020-12-01",
-    //             price: 100,
-    //             payDay: "2020-12-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-11-01",
-    //             dueDate: "2020-11-01",
-    //             price: 100,
-    //             payDay: "2020-11-02",
-    //             status: "payed"
-    //         }
+    {
+        id: 222222,
+        cpf: "88799896002",
+        name: "Leonardo Ramos",
+        email: "leonardoramos@email.com",
+        birthDate: "2002-07-04",
+        celphone: "123456789",
+        address: "1234 Main St",
+        firstQuery: "2021-01-01",
+        lastQuery: "2021-01-01",
+        nextQuery: "2021-02-01",
+        recurrence: "Mensal",
+        job: "Desenvolvedor",
+        origin: "Google",
+        history: [
+            {
+                title: "Consulta 1",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                    "25/09/2023",
+                ],
+            },
+            {
+                title: "Consulta 2",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [],
+            },
+            {
+                title: "Consulta 3",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                ],
+            },
 
-    //     ]
-    // },
-    // {
-    //     id: 333333,
-    //     name: "Sophia Furini",
-    //     email: "sophiafurini@email.com",
-    //     age: 23,
-    //     celphone: "123456789",
-    //     address: "1234 Main St",
-    //     lastPayment: "2021-01-01",
-    //     nextPayment: "2021-02-01",
-    //     price: 500,
-    //     recurrence: "annual",
-    //     plan: "Avançado",
-    //     status: "late",
-    //     history: [
-    //         {
-    //             emissionDate: "2021-01-01",
-    //             dueDate: "2021-01-01",
-    //             price: 100,
-    //             payDay: "2021-01-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-12-01",
-    //             dueDate: "2020-12-01",
-    //             price: 100,
-    //             payDay: "2020-12-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-11-01",
-    //             dueDate: "2020-11-01",
-    //             price: 100,
-    //             payDay: "2020-11-02",
-    //             status: "payed"
-    //         }
+        ]
+    },
+    {
+        id: 333333,
+        cpf: "88799896003",
+        name: "Sophia Furini",
+        email: "sophiafurini@email.com",
+        birthDate: "2002-07-04",
+        celphone: "123456789",
+        address: "1234 Main St",
+        firstQuery: "2021-01-01",
+        lastQuery: "2021-01-01",
+        nextQuery: "2021-02-01",
+        recurrence: "Mensal",
+        job: "Desenvolvedor",
+        origin: "Google",
+        history: [
+            {
+                title: "Consulta 1",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                    "25/09/2023",
+                ],
+            },
+            {
+                title: "Consulta 2",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [],
+            },
+            {
+                title: "Consulta 3",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                ],
+            },
 
-    //     ]
-    // },
-    // {
-    //     id: 444444,
-    //     name: "Leonardo Barbosa",
-    //     email: "leonardobarbosa@email.com",
-    //     age: 25,
-    //     celphone: "123456789",
-    //     address: "1234 Main St",
-    //     lastPayment: "2021-01-01",
-    //     nextPayment: "2021-02-01",
-    //     price: 200,
-    //     recurrence: "monthly",
-    //     plan: "Básico",
-    //     status: "open",
-    //     history: [
-    //         {
-    //             emissionDate: "2021-01-01",
-    //             dueDate: "2021-01-01",
-    //             price: 100,
-    //             payDay: "2021-01-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-12-01",
-    //             dueDate: "2020-12-01",
-    //             price: 100,
-    //             payDay: "2020-12-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-11-01",
-    //             dueDate: "2020-11-01",
-    //             price: 100,
-    //             payDay: "2020-11-02",
-    //             status: "payed"
-    //         }
-
-    //     ]
-    // },
-    // {
-    //     id: 555555,
-    //     name: "Mariele Leiria",
-    //     email: "marieleleiria@email.com",
-    //     age: 24,
-    //     celphone: "123456789",
-    //     address: "1234 Main St",
-    //     lastPayment: "2021-01-01",
-    //     nextPayment: "2021-02-01",
-    //     price: 100,
-    //     recurrence: "monthly",
-    //     plan: "Básico",
-    //     status: "payed",
-    //     history: [
-    //         {
-    //             emissionDate: "2021-01-01",
-    //             dueDate: "2021-01-01",
-    //             price: 100,
-    //             payDay: "2021-01-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-12-01",
-    //             dueDate: "2020-12-01",
-    //             price: 100,
-    //             payDay: "2020-12-02",
-    //             status: "payed"
-    //         },
-    //         {
-    //             emissionDate: "2020-11-01",
-    //             dueDate: "2020-11-01",
-    //             price: 100,
-    //             payDay: "2020-11-02",
-    //             status: "payed"
-    //         }
-
-    //     ]
-    // }
+        ]
+    },
+    {
+        id: 444444,
+        cpf: "88799896004",
+        name: "Leonardo Barbosa",
+        email: "leonardobarbosa@email.com",
+        birthDate: "1999-04-13",
+        celphone: "123456789",
+        address: "1234 Main St",
+        firstQuery: "2021-01-01",
+        lastQuery: "2021-01-01",
+        nextQuery: "2021-02-01",
+        recurrence: "Mensal",
+        job: "Desenvolvedor",
+        origin: "Google",
+        history: [
+            {
+                title: "Consulta 1",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                    "25/09/2023",
+                ],
+            },
+            {
+                title: "Consulta 2",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [],
+            },
+            {
+                title: "Consulta 3",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                ],
+            },
+        ]
+    },
+    {
+        id: 555555,
+        cpf: "88799896005",
+        name: "Mariele Leiria",
+        email: "marieleleiria@email.com",
+        birthDate: "2000-09-12",
+        celphone: "123456789",
+        address: "1234 Main St",
+        firstQuery: "2021-01-01",
+        lastQuery: "2021-01-01",
+        nextQuery: "2021-02-01",
+        recurrence: "Mensal",
+        job: "Personal Trainer",
+        origin: "Google",
+        history: [
+            {
+                title: "Consulta 1",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                    "25/09/2023",
+                ],
+            },
+            {
+                title: "Consulta 2",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [],
+            },
+            {
+                title: "Consulta 3",
+                description: "Paciente compareceu a consulta e foi atendido pela Dra. Natália. Foi diagnosticado com um quadro de depressão leve e foi receitado um tratamento com antidepressivos.",
+                createdAt: "23/09/2023",
+                editedAt: [
+                    "24/09/2023",
+                ],
+            },
+        ]
+    }
 ]

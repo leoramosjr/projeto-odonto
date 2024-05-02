@@ -159,7 +159,7 @@ export default function ClientView() {
                     gap="1.5rem"
                     direction="column"
                 >
-                    <ClientInfos isEditing={isEditing} userData={userData} />
+                    <ClientInfos isEditing={isEditing} userData={userData ?? {}} />
                     <Text
                         fontSize="1.5rem"
                         fontWeight="700"
@@ -182,10 +182,10 @@ export default function ClientView() {
                             <Tbody>
                                 {userData?.history.map((item, index) => (
                                     <Tr key={index} w="100%" display="flex" justifyContent={"space-between"}>
-                                        <Td px="0">{new Intl.DateTimeFormat('pt-BR').format(new Date(item.emissionDate ?? ''))}</Td>
+                                        <Td px="0">{item.title ?? ''}</Td>
                                         <Flex w="30%" justify="space-between">
-                                            <Td px="0">{new Intl.DateTimeFormat('pt-BR').format(new Date(item.dueDate ?? ''))}</Td>
-                                            <Td px="0">{item.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</Td>
+                                            <Td px="0">{item.createdAt ?? ''}</Td>
+                                            <Td px="0">{item.editedAt[0] ?? ''}</Td>
                                         </Flex>
                                     </Tr>
                                 ))}
