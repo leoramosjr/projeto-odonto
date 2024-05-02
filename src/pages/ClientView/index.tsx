@@ -31,6 +31,7 @@ export default function ClientView() {
     const userData = mockClients.find((item) => item.id.toString() === userId.id)
     const { isOpen: isOpen, onOpen: onOpen, onClose: onClose } = useDisclosure();
     const { isOpen: isOpen2, onOpen: onOpen2, onClose: onClose2} = useDisclosure();
+    const { isOpen: isOpen3, onOpen: onOpen3, onClose: onClose3} = useDisclosure();
     const [isEditing, setIsEditing] = useState(false)
     
     document.title = `${userData?.name} | • NR •`
@@ -54,6 +55,16 @@ export default function ClientView() {
                     <ModalCloseButton />
                     <ModalBody>
                         {userData && <EventModal />}
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+            <Modal isOpen={isOpen3} onClose={onClose3}>
+                <ModalOverlay />
+                <ModalContent minW="57.5rem">
+                    <ModalHeader fontWeight={"bold"} fontSize={"1.5rem"}>Nova Postagem</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        {userData && <PostModal />}
                     </ModalBody>
                 </ModalContent>
             </Modal>
@@ -171,7 +182,7 @@ export default function ClientView() {
                     <TableContainer w="100%">
                         <Table>
                             <Thead>
-                                <Tr w="100%" display="flex" justifyContent={"space-between"}>
+                                <Tr w="100%" display="flex" justifyContent={"space-between"} px="1rem">
                                     <Td px="0" fontWeight="bold">Conteúdo</Td>
                                     <Flex w="30%" justify="space-between">
                                         <Td px="0" fontWeight="bold">Data de Criação</Td>
@@ -181,7 +192,19 @@ export default function ClientView() {
                             </Thead>
                             <Tbody>
                                 {userData?.history.map((item, index) => (
-                                    <Tr key={index} w="100%" display="flex" justifyContent={"space-between"}>
+                                    <Tr
+                                        px="1rem"
+                                        key={index}
+                                        w="100%"
+                                        display="flex"
+                                        justifyContent={"space-between"}
+                                        onClick={onOpen3}
+                                        cursor="pointer"
+                                        _hover={{
+                                            backgroundColor: '#F5F5F5'
+                                        }}
+                                        transition="all 0.2s ease-in-out"
+                                    >
                                         <Td px="0">{item.title ?? ''}</Td>
                                         <Flex w="30%" justify="space-between">
                                             <Td px="0">{item.createdAt ?? ''}</Td>
