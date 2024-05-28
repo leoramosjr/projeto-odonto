@@ -12,8 +12,8 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import { FiPlus } from "react-icons/fi";
-import ClientCard from '../../components/ClientCard/index.js'
-import NewClient from '../../components/NewClient/index.js';
+import ClientCard from '../../components/clientList/ClientCard/index.js'
+import NewClient from '../../components/clientList/NewClient/index.js';
 import { useNavigate } from 'react-router-dom';
 import Provider from '../index';
 import { useState } from 'react';

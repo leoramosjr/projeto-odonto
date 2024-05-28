@@ -23,6 +23,20 @@ export default function Callendar() {
 
     const [selectedDate, setSelectedDate] = useState('')
     const { isOpen, onOpen, onClose} = useDisclosure();
+    const events = [
+        {
+          title: 'The Title',
+          start: '2024-05-02',
+          end: '2024-05-02',
+          color: 'var(--chakra-colors-blue-400)'
+        },
+        {
+          title: 'The Title',
+          start: '2024-05-02',
+          end: '2024-05-02',
+          color: 'var(--chakra-colors-red-400)'
+        }
+      ]
 
     return (
         <Flex
@@ -99,6 +113,7 @@ export default function Callendar() {
                         right: 'prev next',
                     }}
                     locale={'pt-br'}
+                    events={events}
                     dateClick={(info) => {
                         setSelectedDate(info.dateStr)
                         onOpen()

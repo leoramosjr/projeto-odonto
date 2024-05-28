@@ -6,8 +6,8 @@ import {
     Radio,
     RadioGroup,
 } from "@chakra-ui/react"
-import Input from "../base/Input";
-import Select from "../base/Select";
+import Input from "../../base/Input";
+import Select from "../../base/Select";
 
 export default function NewClient({
     onClose,

@@ -30,7 +30,7 @@ export default function Provider({
                 bg="white"
                 borderRadius="0.5rem"
                 boxShadow="7px 4px 18.4px 0px rgba(0, 107, 215, 0.15)"
-                p="2rem 1.5rem 4rem 1.5rem"
+                p="2rem 1.5rem 2rem 1.5rem"
                 direction="column"
                 justify="flex-start"
                 align="center"

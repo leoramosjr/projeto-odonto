@@ -7,7 +7,7 @@ import {
 import TestPage from '../pages/Test';
 import ClientList from '../pages/ClientList';
 import ClientView from '../pages/ClientView';
-import Callendar from '../pages/Callendar';
+import Callendar from '../pages/Calendar';
 import Tasks from '../pages/Tasks';
 
 export default function AppRoutes() {

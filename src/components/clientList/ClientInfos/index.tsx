@@ -7,8 +7,8 @@ import {
     Text,
     Tr,
 } from '@chakra-ui/react';
-import Input from '../base/Input';
-import Select from '../base/Select';
+import Input from '../../base/Input';
+import Select from '../../base/Select';
 import { useState } from 'react';
 
 interface IHistory {

@@ -20,9 +20,9 @@ import { FiEdit, FiCheckSquare } from 'react-icons/fi';
 import Provider from '../index.js';
 import { mockClients } from '../../mocks/clients.js';
 import { useParams } from 'react-router-dom';
-import PostModal from '../../components/PostModal/index.js';
+import PostModal from '../../components/clientList/PostModal/index.js';
 import EventModal from '../../components/EventModal/index.js';
-import ClientInfos from '../../components/ClientInfos/index.js';
+import ClientInfos from '../../components/clientList/ClientInfos/index.js';
 import { useState } from 'react';
 
 export default function ClientView() {

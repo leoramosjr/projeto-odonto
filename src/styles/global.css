@@ -5,6 +5,10 @@
 :root {
     --white: #FAFBFC;
     --black: #0a0a0a;
+
+    --green-500: #43A29D;
+    --green-600: #066964;
+    --green-700: #054945;
 }
 
 body {
